@@ -1,0 +1,46 @@
+«tpl link_style.html»
+«tpl ./style.html»
+
+<div class="content-container top-margin">
+    <h1 class="center">«val title»</h1>
+
+    <div class="post-form-container">
+        <div class="location">
+            <input id="location" name="location" type="text" list="draftLocation" autocomplete="off"
+                placeholder="🌐 URI, e.g. https://senf.in">
+            <datalist id="draftLocation">
+                «if draftLocation»<option value="«val draftLocation»"></option>«/if»
+            </datalist>
+        </div>
+        <div class="waiting-time">
+            <select id="waitingTime">
+                <option value="na">--- Waiting time ---</option>
+                «loop selectWaitingTimes»<option «if selected»selected«/if» value="«raw value»">«raw label»</option>
+                «/loop»
+                <option value="custom">Custom...</option> <!-- triggers prompt and adds option to select -->
+            </select>
+        </div>
+        <div class="body">
+            <textarea id="body" placeholder="Your comment...&#10;Press Alt+Shift+s to type §"></textarea>
+        </div>
+        <div class="actions button-bar">
+            <button type="submit" id="postUnsigned">Post</button>
+            <button type="submit" class="sdst-button" id="postSigned">                
+                <svg viewBox="0 0 800 800" alt="SDST logo (quill)">
+                    <use href="assets/img/sdst.svg#main"></use>
+                </svg>
+                Signed Post
+            </button>
+        </div>
+    </div>
+
+    <div class="labels">
+        <div class="preview-label">Preview:</div>
+        <div class="syntax-label">
+            <input type="checkbox" id="syntaxEnabled" checked title="Enable syntax">
+            <a href="#page=syntax">Syntax</a>
+        </div>
+    </div>
+
+    <div class="preview" id="preview"></div>
+</div>

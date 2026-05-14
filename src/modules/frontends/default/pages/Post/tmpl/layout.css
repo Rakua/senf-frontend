@@ -1,0 +1,16 @@
+.post-form-container {
+    display: grid;
+    grid-template-columns: 1fr min-content;
+    grid-template-rows: min-content 1fr min-content;
+    grid-auto-columns: 1fr;
+    gap: 1em 1em;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "location waiting-time"
+        "body body"
+        "actions actions";
+}
+
+#waitingTime {
+    width: 12em;    
+}

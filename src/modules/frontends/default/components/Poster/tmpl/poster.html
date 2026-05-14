@@ -1,0 +1,14 @@
+<span>
+    <span style="color: var(--col-text-primary)">
+        «if poster/type == 'anon'»
+        Anon
+        «elseif poster/type == 'unknown'»
+        Unknown
+        «else»
+        <sfc-keyid value="«val poster/value»"></sfc-keyid>
+        «/if»
+    </span>
+    <span>
+        «if isYou»«if showYou» (you)«/if»«/if»
+    </span>
+</span>

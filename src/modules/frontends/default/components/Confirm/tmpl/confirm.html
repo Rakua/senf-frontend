@@ -1,0 +1,15 @@
+«tpl link_style.html»
+«tpl ./style.html»
+
+<dialog>
+    <div class="normal-gap full-width">
+        <div>
+            <p>«val confirmText»</p>
+        </div>
+
+        <div class="button-bar">
+            <button id="okButton">«if okButtonLabel»«val okButtonLabel»«else»Ok«/if»</button>
+            <button id="closeButton">«if cancelButtonLabel»«val cancelButtonLabel»«else»Cancel«/if»</button>
+        </div>
+    </div>
+</dialog>

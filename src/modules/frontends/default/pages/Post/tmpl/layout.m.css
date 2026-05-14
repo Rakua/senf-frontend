@@ -1,0 +1,17 @@
+.post-form-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content min-content 1fr min-content;
+    grid-auto-columns: 1fr;
+    gap: 0.5em;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "location"
+        "waiting-time"
+        "body"
+        "actions";
+}
+
+/*.action-spacer {
+    width: 1em !important;
+}*/

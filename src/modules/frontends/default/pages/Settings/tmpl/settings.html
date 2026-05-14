@@ -1,0 +1,138 @@
+«tpl link_style.html»
+«tpl ./style.html»
+
+<div class="optics content-container top-margin">
+    <div>
+        <fieldset id="colorThemeFieldset">
+            <legend>Color theme</legend>
+            <div class="normal-gap" style="margin-top:1em;margin-bottom:1em;">
+                <div>
+                    <label>
+                        <input type="radio" name="colorScheme" value="auto" />
+                        System default
+                    </label>
+                </div>
+
+                <div>
+                    <label>
+                        <input type="radio" name="colorScheme" value="light" />
+                        Light
+                    </label>
+                </div>
+
+                <div>
+                    <label>
+                        <input type="radio" name="colorScheme" value="dark" />
+                        Dark
+                    </label>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+
+    <div>
+        <fieldset id="layoutFieldset">
+            <legend>Layout</legend>
+            <div class="normal-gap">
+                <div>
+                    <label>
+                        <input type="radio" name="layout" value="d" />
+                        Desktop
+                    </label>
+                </div>
+
+                <div>
+                    <label>
+                        <input type="radio" name="layout" value="m" />
+                        Mobile
+                    </label>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+<div class="normal-gap content-container settings">
+    <div>
+        <label>Archives (<span id="archivesCount"></span>)</label>
+        <div style="float:right">
+            <button id="addArchiveButton">Add</button>
+            &nbsp;
+            <button id="removeArchiveButton">Manage</button>
+        </div>
+    </div>
+
+    <div>
+        <label>Trusted locations (<span id="trustedLocationCount"></span>)</label>
+        <div style="float:right">
+            <button id="addTrustedLocationButton">Add</button>
+            &nbsp;
+            <button id="removeTrustedLocationButton">Manage</button>
+        </div>
+    </div>
+
+    <div>
+        <label>
+            Comments per page
+            <select id="postsPerPage" class="right">
+                <option>20</option>
+                <option>50</option>
+                <option>100</option>
+                <option value="custom">Custom...</option>
+            </select>
+        </label>
+    </div>
+
+    <div>
+        <label>
+            Echos per page
+            <select id="echosPerPage" class="right">
+                <option>20</option>
+                <option>50</option>
+                <option>100</option>
+                <option value="custom">Custom...</option>
+            </select>
+        </label>
+    </div>
+
+    <div>
+        <label>
+            Always show query bar
+            <input type="checkbox" id="showQueryBar">
+        </label>
+    </div>
+
+    <div>
+        <label>
+            Show (you)
+            <input type="checkbox" id="showYou">
+        </label>
+    </div>
+
+    <div class="display-none">
+        <label>
+            Oldest first on comments
+            <input id="oldestFirst" type="checkbox">
+        </label>
+    </div>
+
+    <div>
+        <label>
+            Show last item of previous page
+            <input id="showLastItemOfPreviousPage" type="checkbox">
+        </label>
+    </div>
+
+    <div class="button-bar top-margin">
+        <button id="exportButton">Export</button>
+        <button id="importButton">Import</button>
+        <button id="resetButton">Reset</button>
+    </div>
+</div>
+
+«tpl ./remove_archive_dialog.html»
+«tpl ./remove_trusted_dialog.html»
+
+«tpl ./export_dialog.html»
+«tpl ./import_dialog.html»
+«tpl ./reset_dialog.html»

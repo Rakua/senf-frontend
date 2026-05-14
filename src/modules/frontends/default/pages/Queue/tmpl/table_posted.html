@@ -1,0 +1,30 @@
+<table>
+    <thead>
+        <tr>            
+            <th class="col-width-id">#</th>
+            <th class="col-width-content-location">Content / Location</th>
+            <th class="col-width-keyid">KeyId</th>
+            <th class="col-width-waiting-time">Waiting time</th>             
+            <th class="col-width-actions"></th>            
+        </tr>
+    </thead>
+    <tbody>
+«loop items»
+        <tr id="«val postId»">
+            <td class="center">«tpl ./seq_no.html»</td>
+            «tpl ./td_content_location.html»
+            «tpl ./td_keyid.html»
+            «tpl ./td_wt_done.html»
+            <td class="center">
+                «tpl ./button_remove.html»
+            </td>
+        </tr>
+«empty»
+        <tr>
+            <td colspan="5" class="center">No post has been posted recently</td>            
+        </tr>         
+«/loop»
+    </tbody>
+</table>
+
+«tpl ./div_posted_actions.html»

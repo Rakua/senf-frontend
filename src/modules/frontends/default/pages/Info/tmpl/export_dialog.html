@@ -1,0 +1,34 @@
+<dialog id="exportDialog" closedBy="none">
+    <div class="normal-gap full-width">
+        <div class="full-width">
+            <h1>Export database</h1>
+
+            <div class="progress">
+                <progress id="exportProgressBar"></progress>
+                <div id="exportTexts" class="display-contents">
+                    <span>
+                        Building export: table <span id="exportCurrentTable"></span>
+                        (<span id="exportCurrentTableI"></span>/<span id="exportCurrentTableN"></span> rows)
+                    </span>
+
+                    <span>
+                        Finished building export (<sfc-byte-size id="exportSize" value="0"></sfc-byte-size>)
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div id="exportButtonBars" class="button-bar">
+            <div class="display-contents">
+                <button id="exportAbort" class="closeButton">Abort</button>
+            </div>
+
+            <div class="display-contents">
+                <button id="exportDownload" class="okButton">Download</button>
+                <button id="exportCancel" class="closeButton">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <a id="exportDownloadLink" download="sf-db.gz" class="display-none">Download DB</a>
+</dialog>

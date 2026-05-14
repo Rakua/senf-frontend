@@ -1,0 +1,10 @@
+«tpl link_style.html»
+<!--<link rel="stylesheet" href="assets/css/highlight/default.css">-->
+<link rel="stylesheet" id="cssLight" href="assets/css/highlight/intellij-light.css" disabled>
+<link rel="stylesheet" id="cssDark" href="assets/css/highlight/atom-one-dark-reasonable.css" disabled>
+<style>
+mjx-math.MJX-TEX {
+    display:none;
+}
+</style>
+<div class="start">«loop ast»«tpl ./block.html»«/loop»</div>

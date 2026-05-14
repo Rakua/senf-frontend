@@ -1,0 +1,17 @@
+<div class="center">
+«if mediaType == 'image'»
+    <img src="«val url»" alt="«val url»" class="responsive-media" referrerpolicy="no-referrer">
+«elseif mediaType == 'video'»
+    <video src="«val url»" class="responsive-media" controls referrerpolicy="no-referrer">
+        <source src="«val url»">
+        Your browser does not support the video element
+    </video>    
+«elseif mediaType == 'audio'»
+    <audio src="«val url»" class="responsive-media" controls referrerpolicy="no-referrer">
+        <source src="«val url»">
+        Your browser does not support the audio element
+    </audio>      
+«else»
+    Unknown media type
+«/if»
+</div>

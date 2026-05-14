@@ -1,0 +1,43 @@
+«tpl link_style.html»
+«tpl ./style.html»
+
+<div id="postHead">
+    <div style="float:left" class="left">
+        <span class="secondary-text">
+            <sfc-poster value="«if posterKind == 'keyid'»«val keyId»«else»«val posterKind»«/if»"«if isYou» isyou«/if»></sfc-poster>
+        </span>
+        <br>
+        <span class="tertiary-text">            
+            «loop times»<sfc-waiting-time value="«val value»"></sfc-waiting-time>«sep» / «/loop» «tpl spacer.html»  
+            «if replies > 0» 
+                (<a class="routed" title="see replies" href="«val hrefGotoReplies»">«val replies»r</a>)           
+            «/if»
+            <a class="routed" title="reply to comment" href="«val hrefReply»">↳</a>            
+        </span>
+    </div>
+    <div style="float:right" class="right">
+        <span class="secondary-text" style="color:var(--col-text-primary)"><sfc-date value="«val postedOn»"></sfc-date></span><br>
+        <span class="tertiary-text">            
+            «if ciInDb»
+            <a id="actionsA" href="javascript:;" title="Actions (share, quote, view source)">⇄</a>
+            «tpl spacer.html»
+            «/if»
+            «if disableLocationLink»
+            #«val seqNo»«tpl is_new.html»
+            «else»
+            <a class="routed" href="«val hrefLocation»">#«val seqNo»</a>«tpl is_new.html»
+            «/if» 
+        </span>
+    </div>
+</div>
+<div class="post-body «if preview»preview«/if»" id="postBody">
+</div>
+<div id="showMore" class="show-more display-none">
+    <a href="javascript:;">more…</a>
+</div>
+«if showUrl»
+<div class="post-footer secondary-text">
+    <sfc-uri value="«val location»"></sfc-uri>
+</div>
+«/if»
+«tpl ./actions_dialog.html»

@@ -1,0 +1,27 @@
+.url-bar {
+    width: calc(100% - 4em);
+}
+
+.col-width-subject {
+    min-width: 50%;
+}
+
+.col-width-status {
+    width: 30em;
+}
+
+.col-width-number {
+    width: 3em;
+}
+
+.col-width-number2 {
+    width: 4em;
+}
+
+.col-width-fstatus {
+    width: 7em;
+}
+
+.col-width-actions {
+    width: 2.5em;
+}

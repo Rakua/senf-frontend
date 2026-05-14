@@ -1,0 +1,22 @@
+<ul class="sourceList">
+    <li><label><input name="all" value="(all)" type="checkbox"> (all)</label></li>
+    «loop archives»
+        «if categories/length == 1»
+            <li class="singleCat">
+                <label>
+                    <input type="checkbox" name="archive" value="«val archiveUrl»"> «val archiveUrl»
+                </label>
+            </li>
+        «else»
+            <li class="multiCat">
+                <label><input type="checkbox" name="archive" value="«val archiveUrl»"> <span>«val archiveUrl»</span></label>
+                <ul>
+                    «loop categories»
+                    <li><label><input type="checkbox" name="category" value="«val -2/archiveUrl» «if catName != null»«val catName»«/if»"> «if catName == null»[rest]«else»«val catName»«/if»</label></li>
+                    «/loop»
+                </ul>
+            </li>               
+        «/if»
+    «/loop»
+    <li><label><input name="user" value="(user)" type="checkbox"> uploaded by user</label></li>
+</ul>

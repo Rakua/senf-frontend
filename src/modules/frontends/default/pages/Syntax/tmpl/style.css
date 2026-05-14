@@ -1,0 +1,57 @@
+* {
+    box-sizing: border-box;
+}
+
+a {
+    cursor: pointer;
+}
+
+.templates {
+    display: flex;
+    /* justify-content: space-evenly;         */
+    justify-content: center;
+    gap: 4em;
+    margin-top:0.5em;
+}
+
+
+.body {
+    width: 100%;
+}
+
+.body textarea {
+    width: 100%;
+}
+
+.preview {
+    margin: auto;
+    margin-top: 0;
+    width: var(--comment-width);
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    clear: both;
+}
+
+
+.labels {
+    margin-top: 2em;
+    font-size: 0.8em;
+    color: var(--secondary-text-color);
+    clear: both;
+}
+
+.preview-label {
+    float: left;
+}
+
+.syntax-label {
+    float: right;
+}
+
+.syntax-error {
+    color: red;
+}
+
+#body {
+    height: 14em;
+}

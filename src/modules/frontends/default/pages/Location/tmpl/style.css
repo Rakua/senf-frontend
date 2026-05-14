@@ -1,0 +1,12 @@
+.info-line {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.responsive-media {
+    object-fit: scale-down;
+    max-width: 100%;
+    max-height: 50vh;
+}

@@ -1,0 +1,26 @@
+<div class="horizontal-scroll">
+    <table class="top-margin">
+        <thead>
+        <tr>
+            <th>Location</th>            
+            <th style="width: 5em">Comments</th>
+            <th style="width: 4em">Echo sum</th>
+            <th style="width: 4em">Echo max</th>
+            <th style="width: 10em">Last comment</th>
+            <!-- <th style="width: 10em">Last post</th> -->
+        </tr>
+        </thead>
+        <tbody>
+        «loop locations»
+        <tr>
+            <td><sfc-uri value="«val location»"></sfc-uri></td>            
+            <td class="right">«val postCount»</td>
+            <td class="right"><sfc-waiting-time value="«val echoSum»"></sfc-waiting-time></td>
+            <td class="right"><sfc-waiting-time value="«val echoMax»"></sfc-waiting-time></td>
+            <td class="right">«if lastPost»<sfc-date value="«val lastPost»"></sfc-date>«else»N/A«/if»</td>
+            <!-- «/*» <td class="right">«if lastCi»<sfc-date value="«val lastCi»"></sfc-date>«else»N/A«/if»</td> «*/» -->
+        </tr>
+        «/loop»
+        </tbody>
+    </table>
+</div>

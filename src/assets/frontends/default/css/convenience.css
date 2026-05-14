@@ -1,0 +1,213 @@
+/* Convenience classes */
+/* 
+  todo: 
+  - remove most classes (do not use float!) 
+  - pageTitle -> page-title
+  - remove action spacer class (style.css); use button-bar instead
+    - e.g. for navi part of paginated component
+*/
+
+.button-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: var(--large-margin);
+}
+
+/* 
+    Use for tables and other content elements whose width might exceed
+    that of <main> in mobile layout. 
+*/
+.horizontal-scroll {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.normal-gap {
+    display: flex;
+    flex-direction: column;
+    gap: var(--normal-margin);
+}
+
+.small-gap {
+    display: flex;
+    flex-direction: column;
+    gap: var(--small-margin);
+}
+
+.centered-div {
+    display: flex;
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: center;
+}
+
+.normal-gap-horizontal {
+    display: flex;
+    flex-direction: row;
+    gap: var(--normal-margin);
+}
+
+.no-top-padding {
+    padding-top: 0px !important;
+}
+
+.top-margin {
+    margin-top: var(--normal-margin);
+}
+
+.top-margin-l {
+    margin-top: var(--large-margin);
+}
+
+.top-margin-l {
+    margin-top: var(--extra-large-margin);
+}
+
+.center-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.secondary-text {
+    color: var(--col-text-secondary);
+    font-size: 0.8em;
+}
+
+.no-soft-wrapping {
+    overflow-wrap: break-word;
+    /*word-break: normal;*/
+    word-break: break-all;
+}
+
+.full-size {
+    height: 100%;
+    width: 100%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.center {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.middle {
+    vertical-align: middle;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.break-word {
+    overflow-wrap: break-word;
+}
+
+.display-none {
+    display: none !important;
+}
+
+.display-contents {
+    display: contents;
+}
+
+.number-input {
+    text-align: right;
+    width: 4em;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.red {
+    color: var(--col-text-attention);
+}
+
+.dangerous-button {
+    color: var(--col-text-attention);
+    font-weight: bold;
+    background: var(--col-tertiary) !important;
+}
+
+.two-lines {
+    line-height: 1.5em;
+    height: 3em;
+    overflow: hidden;
+}
+
+.single-line-text {
+    display: inline-block;
+    padding: 0;
+    white-space: nowrap;
+    overflow-x: auto;
+    /* Prevent line breaks */
+    overflow-y: hidden;
+    /* Enable horizontal scroll */
+}
+
+td.single-line-cell {
+    white-space: nowrap;
+    overflow-x: auto;
+    /* Prevent line breaks */
+    overflow-y: hidden;
+    /* Enable horizontal scroll */
+}
+
+.pageTitle {
+    font-size: var(--tab-title-font-size);
+    margin-bottom: 0.5em;
+}
+
+.info-text {
+    font-size: 0.8em;
+    color: var(--col-text-secondary);
+}
+
+.primary-text-color {
+    color: var(--col-text-primary) !important;
+}
+
+.secondary-text-color {
+    color: var(--col-text-secondary) !important;
+}
+
+.secondary-text {
+    font-size: 0.8em;
+}
+
+.tertiary-text {
+    font-size: 0.8em;
+    color: var(--col-text-secondary);
+}
+
+.sdst-button {
+    display: inline-flex;
+    align-items: center;
+}
+
+.sdst-button svg {
+    height: 1.2em;
+    fill: var(--col-text-primary);
+    padding-right: 0.25em;
+}

@@ -1,0 +1,31 @@
+<table>
+    <thead>
+        <tr>
+            <th class="col-width-content-location">Content / Location</th>
+            <th class="col-width-keyid">KeyId</th>
+            <th class="col-width-waiting-time">Waiting time</th>            
+            <th class="col-width-abort-reason">Abort reason</th>
+            <th class="col-width-actions"></th>
+        </tr>
+    </thead>
+    <tbody>
+«loop items»
+        <tr id="«val postId»">            
+            «tpl ./td_content_location.html»
+            «tpl ./td_keyid.html»
+            «tpl ./td_wt_done.html»
+            <td><div class="single-line-text">«val abortReason»</div></td>
+            <td class="center">
+                «tpl ./button_repost.html»                
+                «tpl ./button_remove.html»
+            </td>
+        </tr>  
+«empty»
+        <tr>
+            <td colspan="5" class="center">No post has been aborted recently</td>            
+        </tr>
+«/loop»
+    </tbody>
+</table>
+
+«tpl ./div_aborted_actions.html»

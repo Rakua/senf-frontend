@@ -1,0 +1,35 @@
+:root[data-theme="light"] {
+	color-scheme: light;
+
+	--col-primary: #f8cf58; /* header bg color and border color */    
+	--col-secondary: #ffefd1; /* content area bg color */    
+	--col-secondary-alt: #ffe8be; /* content area alt bg color */    
+	--col-tertiary: #faf7f4; /* page bg color (same as bg image background) */    
+
+    /* color of links and icons in header navi when active*/
+	--col-navi-active: #444; /* should be the same as col-text-primary */
+	--col-navi-inactive: #444;
+
+	--col-text-primary: #444;
+	--col-text-secondary: #808080;
+	--col-text-attention: red;
+	--col-spoiler-bg: #444;
+	--col-code-bg: #f2efe7;
+	--col-backdrop: rgba(230,230,230,0.8);
+
+	--col-link: #cf0000; /* try blue #265cff */
+	--col-link-hover: #ff0000;
+	--col-link-visited: #b50000;
+
+	--col-button-bg-top: #fed96d;
+	--col-button-bg-bot: #e5c465;
+	--col-button-bg-top-disabled: rgba(255, 252, 214, 1);
+	--col-button-bg-bot-disabled: rgba(240, 238, 182, 1);
+
+	--col-checkbox-bg: #ffa500;
+	--col-input-bg-disabled: #e9e9e9; /* should be based off of col-tertiary */ 
+}
+
+:root[data-theme="light"] body {
+    background-image: url("../img/background.light.png");
+}

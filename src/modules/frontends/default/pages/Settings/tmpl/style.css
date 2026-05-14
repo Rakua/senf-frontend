@@ -1,0 +1,42 @@
+.settings {
+    width: var(--comment-width);
+    margin: auto;
+    margin-top: 2em;
+}
+
+.settings select, .settings input {
+    float: right;
+}
+
+.settings select, .settings input:not([type=checkbox]) {
+    width: 12em;
+}
+
+.optics {
+    margin: auto;
+    margin-top: 1em;
+    width: var(--compact-width);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+ 
+.checkbox-list {
+    margin-top:-1em;
+}
+
+.checkbox-list label {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+/* .optics fieldset {
+    padding-right: 5em;
+} */
+
+/* .optics fieldset input {
+    float: none !important;
+    width: unset !important;
+} */

@@ -1,0 +1,39 @@
+.page-container {
+    margin-top: 1em;
+    margin-bottom: 2em;
+    margin: auto;
+}
+
+.tab-navi {
+    display: flex;
+    justify-content: space-evenly;
+    /* flex-flow: wrap; */
+    flex-wrap: wrap;
+}
+
+.tab-navi>div {
+    font-size: var(--tab-title-font-size);
+}
+
+.tab-navi a {
+    color: var(--text-color);
+}
+
+.action-button {
+    font-size: 0.7em;
+    padding: 0.5em;
+    margin-left: 0.3em;
+    margin-right: 0.3em;
+}
+
+table {
+    width: 100%;
+}
+
+tbody>tr {
+    height: 3.5em;
+}
+
+div.single-line-text {
+    width: 95%;
+}

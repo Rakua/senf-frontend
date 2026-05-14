@@ -1,0 +1,225 @@
+:root {
+    --small-margin: 0.5em;
+    --normal-margin: 1em;
+    --large-margin: 2em;
+    --extra-large-margin: 3em;
+    --tab-title-font-size: 1.5em;
+}
+
+:root[data-layout="d"] {
+    --tab-title-font-size: 1.5em;
+    --comment-width: 40em;
+    --compact-width: 40em;
+}
+
+:root[data-layout="m"] {
+    --tab-title-font-size: 1.25em;
+    --comment-width: min(calc(100% - 1em), 40em);
+    --compact-width: min(calc(100% - 1em), 40em);
+}
+
+html,
+body {
+    /* scrollbar-gutter: stable; */
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background-position: 19px 38px;
+    font-family: 'Open Sans', sans-serif;
+    color: var(--col-text-primary);
+}
+
+body.dialogOpen {
+    overflow: hidden;
+}
+
+:root[data-layout="d"] body {
+    min-width: 810px;
+}
+
+:root[data-layout="m"] body {
+    min-width: 320px;
+}
+
+/*** Text elements ***/
+h1 {
+    margin: 0;
+    margin-bottom: 0.5em;
+    text-align: center;
+    font-size: var(--tab-title-font-size);
+    font-weight: normal;
+}
+
+blockquote {
+    margin-right: 0;
+}
+
+a {
+    color: var(--col-link);
+    text-decoration: none;
+}
+
+/*todo: add "remember-visited" class to <a> els that use different visited color */
+a.remember-visited:visited {
+    color: var(--col-link-visited);
+}
+
+a[data-fresh]:visited {
+    color: var(--col-link);
+}
+
+a:hover,
+a[data-fresh]:hover {
+    color: var(--col-link-hover);
+}
+
+/*** Tables ***/
+table {
+    table-layout: fixed;
+    /* prevents table from overflowing parent div */
+}
+
+th {
+    background-color: var(--col-primary);
+    color: var(--col-navi-inactive);
+    padding-left: 1em;
+    padding-right: 1em;
+    height: 1.5em;
+    font-weight: bold;
+    font-size: 0.8em;
+}
+
+td {
+    height: 1.5em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-size: 0.8em;
+}
+
+tr:nth-child(even) td {
+    background-color: var(--col-secondary-alt);
+}
+
+/*** Overlay elements ***/
+dialog::backdrop {
+    background: var(--col-backdrop);
+}
+
+dialog {
+    position: fixed;
+    inset: 50% auto auto 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+
+    /* if dialog is too high add scroll bar */
+    max-height: 90%;
+    overflow-y: auto;
+
+    background: var(--col-secondary);
+    border: 1px solid var(--col-primary);
+
+    width: var(--comment-width);
+    /* todo: different on mobile */
+    padding-bottom: 2em;
+}
+
+/*** Form elements ***/
+fieldset {
+	border: 1px solid var(--col-primary);
+}
+
+fieldset:disabled {
+    background: rgba(0.8,0.8,0.8,0.05);
+}
+
+input,
+button,
+select,
+textarea {
+    color: var(--col-text-primary);
+    border-radius: 4px;
+    border: 1px solid var(--col-primary);
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+input,
+select,
+textarea {
+    background-color: var(--col-tertiary);
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--col-text-secondary);
+}
+
+input:disabled,
+select:disabled,
+textarea:disabled {    
+    background-color: var(--col-input-bg-disabled);
+}
+
+button:active,
+input:focus,
+textarea:focus {
+    outline: solid var(--col-primary) 1px;
+}
+
+input[type="checkbox"] {
+    accent-color: var(--col-checkbox-bg);
+    height: 1.2em;
+    width: 1.2em;
+}
+
+button {
+    background-color: var(--col-button-bg-top);
+    background: linear-gradient(0deg, var(--col-button-bg-bot) 0%, var(--col-button-bg-top) 100%);
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+button:disabled {
+    background-color: var(--col-button-bg-top);
+    background: linear-gradient(0deg, var(--col-button-bg-bot) 0%, var(--col-button-bg-top) 100%);
+    border: 1px solid var(--col-tertiary);  
+    color: var(--col-text-secondary);
+}
+
+form {
+    all: unset !important;
+}
+
+/*** Other elements ***/
+.progress {
+    width: 100%;
+    text-align: center;
+}
+
+.progress > progress {
+    width: calc(100% - 2em);
+    accent-color: var(--col-checkbox-bg);
+    display: block;
+    margin: auto;
+}
+
+/*** Global classes used across different components ***/
+
+.content-container {
+    box-sizing: border-box;
+}
+
+/* .content-container {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+span.action-spacer {
+    display: inline-block;
+    width: var(--normal-margin);
+} */

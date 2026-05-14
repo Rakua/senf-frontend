@@ -1,0 +1,19 @@
+«tpl link_style.html»
+«tpl ./style.html»
+
+<div class="layout">
+    <header id="header">
+        <div class="header-left">
+            <div id="logo" class="logo">
+                <a href="#page=info"><img id="logoImg" src="assets/frontends/default/img/senf.svg"
+                        alt="Page logo (mustard bottle)"></a>
+            </div>
+        </div>
+        <div class="header-center navi">
+            «loop pages»«if naviLabel»«if inShortNavi»«tpl ./navi_entry.html»«/if»«/if»«/loop»
+        </div>
+        <div class="header-right"></div>
+    </header>
+    <main id="main" class="main-area"></main>
+</div>
+«tpl ./share_dialogs.html»

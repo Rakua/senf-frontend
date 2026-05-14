@@ -1,0 +1,38 @@
+<table>
+    <tbody>
+«loop items»
+        <tr id="«val postId»">            
+            <td class="col-width-content-location">
+                «tpl ./location.html»
+                «if content»
+                    <div class="single-line-text">«val content»</div>
+                «/if»
+                <div>
+                    <div class="float-left">
+                        <div class="single-line-text" style="width:13em">«val abortReason»</div>
+                    </div>                    
+                    <!--
+                    <div class="float-left">
+                        «if keyId»<sfc-keyid>«val keyId»</sfc-keyid>«/if»                        
+                    </div>
+                    -->
+                    
+                    <div class="float-right right">
+                        <sfc-waiting-time value="«val waitingTimeMin»"></sfc-waiting-time>                        
+                    </div>                    
+                </div>
+            </td>            
+            <td class="col-width-actions right">
+                «tpl ./button_repost.html»                
+                «tpl ./button_remove.html»
+            </td>
+        </tr>  
+«empty»
+        <tr>
+            <td class="center">No post has been aborted recently</td>            
+        </tr>
+«/loop»
+    </tbody>
+</table>
+
+«tpl ./div_aborted_actions.html»

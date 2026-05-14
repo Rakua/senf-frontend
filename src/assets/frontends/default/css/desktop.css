@@ -1,0 +1,14 @@
+table {
+    border: 1px solid var(--col-primary);
+    width: calc(100% - 2em);
+    margin: auto;
+}
+
+.narrow-table {
+    width: var(--compact-width);
+}
+
+.content-container {
+    padding-left: 2em;
+    padding-right: 2em;
+}

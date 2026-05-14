@@ -1,0 +1,6 @@
+«if leadingBreak»<br>«/if»
+«if isQuoteLine»<span class="quote-line break-word">«/if»
+«loop value»
+«if type == "Plain"»«val value»«elseif type == "LineBreak"»<br>«elseif type == "Uri"»«tpl ./line_uri.html»«elseif type == "Emphasis"»«tpl ./line_emphasis.html»«elseif type == "Code"»«tpl ./line_code.html»«elseif type == "Math"»«tpl ./line_math.html»«elseif type == "Spoiler"»«tpl ./line_spoiler.html»«/if»
+«/loop»
+«if isQuoteLine»</span><br>«/if»

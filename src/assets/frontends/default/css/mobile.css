@@ -1,0 +1,14 @@
+table {
+    border-top: 1px solid var(--col-primary);
+    border-bottom: 1px solid var(--col-primary);    
+    min-width: 100%;
+}
+
+.content-container {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+/* button, input, textarea, select {
+    font-size: 0.8em;
+} */

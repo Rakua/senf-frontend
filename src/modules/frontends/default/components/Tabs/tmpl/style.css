@@ -1,0 +1,32 @@
+:host {
+    display:block;
+}
+
+.«raw classNames/navi» {
+    display: flex;
+    justify-content: space-evenly;
+    /* flex-flow: wrap; */
+    flex-wrap: wrap;
+}
+
+button.«raw classNames/button» {
+    font-size: var(--tab-title-font-size);
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    color: var(--col-text-primary) !important;
+    cursor: pointer;
+}
+
+button:active.«raw classNames/button» {
+    outline: none;
+}
+
+button.«raw classNames/active» {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+}
+
+sfc-tab-contents {
+    display: block;
+}

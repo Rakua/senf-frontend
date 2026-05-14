@@ -1,0 +1,35 @@
+<table>    
+    <tbody>
+«loop items»
+        <tr id="«val postId»">
+            <td class="col-width-content-location">
+                «tpl ./location.html»
+                «if content»
+                    <div class="single-line-text">«val content»</div>
+                «/if»
+                <div>     
+                    <div class="float-left">
+                        «if keyId»<sfc-keyid value="«val keyId»"></sfc-keyid>«/if»
+                        «if missingSignature»<span>*sign</span>«/if»
+                    </div>
+                    <div class="float-right right" title="Est. time of submission: «val etsTime»">
+                        «if showCountdown»(<sfc-countdown value="«val ets»"></sfc-countdown>)«/if»
+                        <sfc-waiting-time value="«val waitingTimeMin»"></sfc-waiting-time>                        
+                    </div>                    
+                </div>
+            </td>            
+            <td class="col-width-actions right">
+                «tpl ./button_sign.html»
+                &nbsp; 
+                «tpl ./button_abort.html»
+            </td>
+        </tr>
+«empty»
+        <tr>
+            <td class="center">No post is enqueued</td>            
+        </tr> 
+«/loop»
+    </tbody>
+</table>
+
+«tpl ./div_enqueued_actions.html»

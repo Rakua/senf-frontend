@@ -1,0 +1,101 @@
+«tpl link_style.html»
+<style>
+    .bypass {
+        border: 2px solid red;
+        margin: auto;
+        margin-bottom: 1em;
+    }
+</style>
+
+<div id="bypass" class="bypass display-none narrow-table" style="margin-top:1em;">
+    <div class="center" style="padding: 1em;">
+        ⚠️ Bypassing CI checks ⚠️<br>
+        <span id="bypassData" style="font-family: monospace;"></span>
+    </div>
+</div>
+
+<h1 class="page-heading top-margin">Database</h1>
+
+<div class="horizontal-scroll">
+    <table class="narrow-table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Loaded</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Storage</td>
+                <td class="right"><sfc-byte-size id="storageUsed"></sfc-byte-size></td>
+                <td class="right"><sfc-byte-size id="storageTotal"></sfc-byte-size></td>
+            </tr>
+            <tr>
+                <td>Comments</td>
+                <td class="right"><span id="localPostCount"></span></td>
+                <td class="right"><span id="globalPostCount"></span></td>
+            </tr>
+            <tr>
+                <td>Echos</td>
+                <td class="right"><span id="localEchoCount"></span></td>
+                <td class="right"><span id="globalEchoCount"></span></td>
+            </tr>
+            <tr>
+                <td title="only http(s)">URLs</td>
+                <td class="right"><span id="urlCount"></span></td>
+                <td class="right secondary-text">-</td>
+            </tr>
+            <tr>
+                <td>KeyIds</td>
+                <td class="right"><span id="keyIdCount"></span></td>
+                <td class="right secondary-text">-</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="button-bar top-margin">
+    <button id="exportButton">Export</button>
+    <button id="importButton">Import</button>
+    <button id="deleteButton">Delete</button>
+    <!-- <button id="recomputeButton">Recompute stats</button> -->
+
+    <input id="importFileInput" name="importFileInput" type="file" class="display-none">
+</div>
+
+<h1 class="page-heading top-margin-l">Senf Frontend</h1>
+
+<div class="horizontal-scroll">
+    <table class="narrow-table">
+        <tr>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>Version</td>            
+            <td class="right">«val sfVersion»</td>
+        </tr>
+        <tr>
+            <td  onclick="alert('«val sfBuildDateStr»')">Build date</td>
+            <td class="right" title="«val sfBuildDateStr»">«if devMode»«val sfBuildDateStr»«else»<sfc-date value="«val sfBuildDate»" mode="absolute">«/if»</td>
+        </tr>
+        <tr>
+            <td>Main tab</td>
+            <td class="right"><span id="isMainTab"></span></td>
+        </tr>
+        <tr>
+            <td>Dev mode</td>
+            <td class="right">«if devMode»true«else»false«/if»</td>
+        </tr>
+    </table>
+</div>
+
+<div class="button-bar top-margin">
+    <button id="websiteButton">Website</button>
+    <button id="repositoryButton">Repository</button>
+</div>
+
+«tpl ./export_dialog.html»
+«tpl ./import_dialog.html»
+«tpl ./delete_dialog.html»

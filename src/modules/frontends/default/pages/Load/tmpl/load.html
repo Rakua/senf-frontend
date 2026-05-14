@@ -1,0 +1,28 @@
+«tpl link_style.html»
+«tpl ./style.html»
+
+<div class="url-bar">
+    <input id="urlInput" name="urlInput" type="text" placeholder="Enter URL or leave empty to load from file">
+    <button id="loadButton" type="submit">Load</button>
+</div>
+<input type="file" name="filesInput" id="filesInput" multiple class="display-none">
+
+<sfc-tabs id="tabs" class="top-margin-l">
+    <sfc-tab name="ongoing">
+        <sfc-tab-title>Ongoing (<span class="size">0</span>)</sfc-tab-title>
+        <sfc-tab-contents></sfc-tab-contents>
+    </sfc-tab>
+    <sfc-tab name="finished">
+        <sfc-tab-title>Finished (<span class="size">0</span>)</sfc-tab-title>
+        <sfc-tab-contents></sfc-tab-contents>
+    </sfc-tab>
+</sfc-tabs>
+
+<div class="center top-margin">
+    <label for="startedBySelect">started by </label>
+    <select id="startedBySelect" name="startedBySelect">
+        <option value="user">user</option>
+        <option value="script">script</option>
+        <option value="anyone">anyone</option>
+    </select>
+</div>

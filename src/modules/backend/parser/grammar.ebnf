@@ -1,0 +1,45 @@
+/* must end with \n */
+Start = (EmptyBlock | TextBlock | CodeBlock | MathBlock | QuoteBlock | SpoilerBlock)+
+
+EmptyBlock = (Ws? Nl)+
+TextBlock  = (TextLine Nl)+
+TextLine   = (Plain | LineBreak | Uri | Code | Math | Emphasis | Spoiler)+
+
+Plain     = (Ws? (Txt | EscapeCmd) Ws?)+
+LineBreak = Ws? BreakCmd Ws?
+Uri       = Ws? UriCmd (Txt | EscapeCmd)+ Ws?
+Code      = Ws? CodeCmd CodeLanguage? " " (Plain | Ws) CodeCmd Ws?
+Math      = Ws? MathCmd Plain MathCmd Ws?
+Emphasis  = Ws? EmphasisCmd Plain EmphasisCmd Ws?
+Spoiler   = Ws? SpoilerCmd (Plain | Uri | Code | Math | Emphasis)+ SpoilerCmd Ws?
+
+CodeBlock    = Ws? CodeStartCmd CodeLanguage? Ws? Nl CommandFreeContent CodeEndCmd Ws? Nl
+MathBlock    = Ws? MathStartCmd CommandFreeContent MathEndCmd Ws? Nl
+QuoteBlock   = Ws? QuoteStartCmd Start Ws? QuoteEndCmd Ws? Nl
+SpoilerBlock = Ws? SpoilerStartCmd Start Ws? SpoilerEndCmd Ws? Nl
+
+CommandFreeContent = (Txt | Ws | Nl | EscapeCmd)+
+
+CodeLanguage    = "c" | "php" | "html" | "css" | "javascript" | "cpp" | ...
+
+EscapeCmd       = "§§"
+BreakCmd        = "§n"
+UriCmd          = "§@"
+
+EmphasisCmd     = "§!"
+SpoilerCmd      = "§?"
+CodeCmd         = "§`"
+MathCmd         = "§$"
+
+CodeStartCmd    = "§<"
+CodeEndCmd      = "§>"
+MathStartCmd    = "§["
+MathEndCmd      = "§]"
+QuoteStartCmd   = "§bq"
+QuoteEndCmd     = "§eq"
+SpoilerStartCmd = "§bs"
+SpoilerEndCmd   = "§es"
+
+Nl  = "\n"
+Ws  = [ \t]+
+Txt = [^\n \t§]+

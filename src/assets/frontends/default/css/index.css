@@ -1,0 +1,13 @@
+/* Only included in index.html (not available in components) */
+#appLoading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+#appLoading img {
+    opacity: 50%;
+    width:30%;
+}

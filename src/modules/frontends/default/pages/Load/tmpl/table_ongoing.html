@@ -1,0 +1,44 @@
+«tpl ./style.html»
+<div class="horizontal-scroll top-margin">
+<table>
+    <thead>
+        <tr>
+            <th class="col-width-subject">File</th>
+            <th class="col-width-status">Status</th>
+            <th class="col-width-actions"></th>
+        </tr>
+    </thead>
+    <tbody>
+«loop items»
+        <tr>
+            <td>
+                <div class="single-line-text">
+                    «if subject/type == "file"»
+                        «val subject/filename»
+                    «else»
+                        <a href="«raw subject/url»" target="_blank">«val subject/urlWithoutScheme»</a>
+                    «/if»
+                </div>
+            </td>
+            <td class="center">
+                «if status == "started"»           
+                    «if progress/totalBytes != null»
+                        <progress max="100" value="«raw progress/percent»"></progress><br>
+                    «/if»                
+                    <sfc-byte-size value="«val progress/processedBytes»"></sfc-byte-size> / «if progress/totalBytes != null»<sfc-byte-size value="«val progress/totalBytes»"></sfc-byte-size>«else»?«/if» («val progress/itemsAdded» new)
+                «else»
+                    waiting
+                «/if»
+            </td>
+            <td class="center">
+                <button data-jobid="«raw jobId»" class="abortButton action-button">❌</button>
+            </td>
+        </tr>
+«empty»
+        <tr>
+            <td colspan="3" class="center">No files are being loaded</td>
+        </tr> 
+«/loop»
+    </tbody>
+</table>
+</div>

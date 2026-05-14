@@ -1,0 +1,15 @@
+main {
+    border-left: 2px solid var(--col-primary);
+    border-right: 2px solid var(--col-primary);
+    width: max(800px, 70%);
+}
+
+.navi {    
+    gap: var(--large-margin);
+}
+
+.navi-item {
+    padding-left: 1.2em;
+    padding-right: calc(1.2em + 5px);
+    padding-top: 4px;
+}

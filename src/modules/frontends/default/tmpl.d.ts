@@ -1,0 +1,1 @@
+export function tmpl(tmplName: string, tmplData: Object, preferred: string): string

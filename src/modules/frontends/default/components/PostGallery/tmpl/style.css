@@ -1,0 +1,49 @@
+:host {
+    display: block;
+}
+
+sfc-paginated::part(post-gallery) {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+sfc-paginated::part(post-item-container), sfc-paginated::part(post-item-container-last), sfc-paginated::part(post-item-container-first) {
+    width: 100%;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+sfc-paginated::part(post-item) {
+    margin: 0 auto;
+}
+
+.gallery {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    width: 40em;
+}
+
+/* .gallery-item {
+    width: 100%;
+    text-align: left;
+    margin: 0 auto;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    border-top: 1px dashed var(--col-primary);
+}
+
+.gallery-item:last-child {
+    border-bottom: 1px dashed var(--col-primary);
+} */
+
+/* .post-width {
+    width: 40em;
+    display: block;
+    margin: 0 auto;
+} */

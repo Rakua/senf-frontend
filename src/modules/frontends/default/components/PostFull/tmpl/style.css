@@ -1,0 +1,36 @@
+:host {
+    display: block;
+    width: var(--comment-width);
+}
+
+.post-body {
+    clear: both;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    border-top: 1px solid var(--col-primary);
+}
+
+.preview {
+    max-height: 7.5lh;
+    overflow: hidden;
+}
+
+.preview-overflow {
+    mask-image: linear-gradient(to bottom,
+            black calc(100% - 1.5lh),
+            transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom,
+            black calc(100% - 1.5lh),
+            transparent 100%);
+}
+
+.show-more {
+    font-size: 0.8em;
+    text-align: center;
+    padding-top: var(--normal-margin);
+    padding-bottom: var(--normal-margin);
+}
+
+.post-footer {
+    border-top: 1px solid var(--col-primary);
+}

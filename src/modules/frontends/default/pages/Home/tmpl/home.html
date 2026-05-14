@@ -1,0 +1,23 @@
+«tpl link_style.html»
+«tpl ./style.html»
+
+<div class="url-bar">
+    <input id="url" list="urlSuggestions" autocomplete="off" name="url" type="text" placeholder="🌐 Location (URI), e.g. https://senf.in">
+    <datalist id="urlSuggestions"></datalist>
+    <button id="go" type="submit">Go</button>
+    <button id="newComment">New</button>
+</div>
+
+<div class="center top-margin content-container" style="clear:both">
+    <div class="info-text">
+        <a id="loadPageA" href="#page=load">«tpl ./loaded.html»</a>
+        <span id="statusPart">
+            <span>(<span id="statusDownload"></span>)</span>
+            <span id="statusLoading" class="display-none">(loading<sfc-loading-dots></sfc-loading-dots>)</span>
+            <span id="statusCommentsNew" class="display-none">(new posts, <a id="statusCommentsRefreshA" href="javascript:;">refresh</a>)</span>
+        </span>
+    </div>
+</div>
+
+<div id="querybar" class="top-margin-l"></div>
+<div id="gallery" class="top-margin"></div>

@@ -1,0 +1,28 @@
+«tpl link_style.html»
+
+<div class="normal-gap">
+    <div class="top-margin">
+        <h1 class="page-heading">Details of #«val seqNo»</h1>
+    </div>
+
+    <div id="source" class="content-container"></div>
+
+    <div class="button-bar">
+        <button disabled class="sdst-button" id="verifyButton">
+            <svg viewBox="0 0 800 800" alt="SDST logo (quill)">
+                <use href="assets/img/sdst.svg#main"></use>
+            </svg>
+            Verify
+        </button> 
+        <button disabled class="sdst-button display-none" id="verifyContentButton">
+            <svg viewBox="0 0 800 800" alt="SDST logo (quill)">
+                <use href="assets/img/sdst.svg#main"></use>
+            </svg>
+            Verify content
+        </button>
+        <button disabled id="downloadButton">Download</button>
+        <button id="backButton">Back</button>
+    </div>
+
+    <a class="display-none" id="downloadA"></a>
+</div>

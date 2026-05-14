@@ -1,0 +1,18 @@
+«tpl link_style.html»
+«tpl ./style.html»
+
+<div class="«if $preferred != 'm'»content-container«/if» top-margin">
+    <!--<div class="content-container top-margin">-->
+    <div class="tab-navi">
+        <div id="enqueuedLink"><a href="#page=queue&tab=enqueued">Enqueued (<span id="enqueuedSize"></span>)</a></div>
+        <div id="postedLink"><a href="#page=queue&tab=posted">Posted (<span id="postedSize"></span>)</a>
+        </div>
+        <div id="abortedLink"><a href="#page=queue&tab=aborted">Aborted (<span id="abortedSize"></span>)</a></div>
+    </div>
+
+    <div class="tab-pages top-margin">
+        <div id="enqueuedTab" class="page-container display-none"></div>
+        <div id="postedTab" class="page-container display-none"></div>
+        <div id="abortedTab" class="page-container display-none"></div>
+    </div>
+</div>

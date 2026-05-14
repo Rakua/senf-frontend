@@ -1,0 +1,7 @@
+«tpl link_style.html»
+<select id="periodSelect" style="max-width: 11em;">
+    «loop presets»<option value='«json value»'>«val label»</option>«/loop»
+    <option value="custom">Custom...</option>
+</select>
+
+«tpl ./period_dialog.html»

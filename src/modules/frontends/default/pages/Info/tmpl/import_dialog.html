@@ -1,0 +1,50 @@
+<dialog id="importDialog" closedby="none">
+    <div class="normal-gap full-width">
+        <h1>Import database</h1>
+
+        <div class="progress">
+            <progress id="importProgressBar"></progress>
+            <span id="importFilename"></span>
+            (<sfc-byte-size id="importFileSizeProcessed" value="0"></sfc-byte-size> / <sfc-byte-size
+                id="importFileSizeTotal" value="0"></sfc-byte-size>)
+        </div>
+
+        <div id="importTexts" class="display-contents">
+            <div style="visibility: hidden;">
+                Importing
+            </div>
+
+            <div>
+                Finished importing: <span id="importNewRecords"></span> new record(s), <span
+                    id="importProcessedRecords"></span> record(s) processed
+            </div>
+
+            <div>
+                Aborted importing. The database has not been changed.
+            </div>
+
+            <div>
+                <p>
+                    <span class="red">Error</span>:
+                    <span id="importErrorMessage"></span>
+                </p>
+
+                <p>
+                    The database has not been changed.
+                </p>
+            </div>
+        </div>
+
+        <div id="importButtonBars" class="button-bar">
+            <div class="display-contents">
+                <button id="importAbortButton">Abort</button>
+            </div>
+
+            <div class="display-contents">
+                <button id="importOkButton">Ok</button>
+            </div>
+        </div>        
+    </div>
+    
+    <input type="file" name="importFileInput" id="importFileInput" class="display-none">
+</dialog>

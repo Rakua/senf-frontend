@@ -1,0 +1,10 @@
+«tpl link_style.html»
+«tpl ./style.html»
+
+<button id="filterButton">«if filterButtonLabel»«val filterButtonLabel»«else»Filter«/if»</button>
+
+«if entity == 'ci'»
+«tpl ./dialog_ci.html»
+«elseif entity == 'location'»
+«tpl ./dialog_location.html»
+«/if»

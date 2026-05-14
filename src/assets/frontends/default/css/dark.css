@@ -1,0 +1,48 @@
+:root[data-theme="dark"] {
+    color-scheme: dark;
+
+    /* --col-primary: #dbac1f;  */
+    --col-primary: #ab8617; 
+    --col-secondary: #1e1d1a;
+    --col-secondary-alt: #171616;
+    --col-tertiary: #11110f;
+
+    --col-navi-active: #E2DDD7; /* should be the same as col-text-primary */
+    --col-navi-inactive: #222; 
+
+    /* --col-text-primary: #FBFBFB; */
+    /* --col-text-primary: #EFE8E0;  */
+    --col-text-primary: #E2DDD7;    
+    
+    --col-text-secondary: #b6b6b6;
+    /* --col-text-secondary: #E0E0E0;     */
+    --col-text-attention: red;
+    --col-spoiler-bg: #060606;
+    --col-code-bg: #282c34;
+    --col-backdrop: rgba(0,0,0,0.8);
+
+    /* todo: make weaker contrast versions for dark theme */
+    --col-link: #ff7800;
+    --col-link-hover: #ff8d28;
+    --col-link-visited: #c85e00;
+
+    /* --col-button-bg-top: #ab8617;
+    --col-button-bg-bot: #6c5510; */
+    --col-button-bg-top: #6c5510;
+    --col-button-bg-bot: #4e3d0b;    
+    --col-button-bg-top-disabled: rgba(255, 252, 214, 1);
+    --col-button-bg-bot-disabled: rgba(240, 238, 182, 1);
+
+    --col-checkbox-bg: #ffa500;
+    --col-input-bg-disabled: #222;
+}
+
+:root[data-theme="dark"] body {
+    background-image: url("../img/background.dark.png");
+}
+
+/* @media (prefers-color-scheme: dark) {
+    body {
+        background-image: url("../img/background.dark.png");
+    }
+} */

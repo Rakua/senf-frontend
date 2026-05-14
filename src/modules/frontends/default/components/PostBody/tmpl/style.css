@@ -1,0 +1,102 @@
+«/*»
+«if setWidth»
+:host {
+    width: var(--comment-width);
+    display: block;
+}
+«/if»
+«*/»
+
+/* .start * {    
+    overflow-x: auto;
+} */
+
+.start {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+}
+
+.start :first-child, .quote :first-child, .spoiler :first-child {
+    margin-top: 0;
+}
+
+.start :last-child, .quote :last-child, .spoiler :last-child {
+    margin-bottom: 0;
+}
+
+/* em {
+    font-weight: bold;
+    font-style: normal;
+} */
+
+p, .block-code, blockquote {
+    box-sizing: border-box;
+    width:100%;
+}
+
+p, pre.block-code, blockquote, div.math, div.spoiler {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.block-code {
+    box-sizing: border-box;
+    /* margin-left: 0.5em; */
+    padding: 0.5em;
+    overflow-x: auto;    
+}
+
+.block-code code {
+    white-space: pre;
+}
+
+.block-code, code {
+    background-color: var(--col-code-bg);
+    /* #f2efe7 */
+    /*width:fit-content;*/
+}
+
+code {
+    color: var(--text-color);
+}
+
+code.inline {
+    padding: 0.3em;
+    margin: 0.2em;
+}
+
+div.math {
+    text-align: center;
+    overflow-x: auto;  
+}
+
+/* span.math::after {
+    content: " ";
+} */
+
+blockquote {
+    box-sizing: border-box;
+    margin-left: 0.5em;
+    padding-left: 0.5em;
+    border-left: 2px solid var(--col-primary);
+    width:fit-content;    
+}
+
+.quote-line {
+    color: green;
+}
+
+div.spoiler {
+    padding: 0.5em;
+}
+
+.spoiler-on, .spoiler-on * {
+    background: var(--col-spoiler-bg);
+    color: transparent !important;
+    cursor: pointer;
+    border-color: var(--text-color);    
+}
+
+.spoiler-off {
+    background: rgba(0,0,0,0.05);  
+}

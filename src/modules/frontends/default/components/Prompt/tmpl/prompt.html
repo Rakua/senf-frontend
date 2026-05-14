@@ -1,0 +1,18 @@
+«tpl link_style.html»
+«tpl ./style.html»
+
+<dialog>
+    <div class="normal-gap full-width">
+        <div>
+            <p>«val promptText»</p>
+            <div class="center">
+                <input id="dialogInput" «if rightAlign»class="right"«/if» autofocus type="text" «if placeholder»placeholder="«val placeholder»"«/if»>
+            </div>            
+        </div>
+
+        <div class="button-bar">
+            <button id="okButton">«if okButtonLabel»«val okButtonLabel»«else»Ok«/if»</button>
+            <button id="closeButton">«if cancelButtonLabel»«val cancelButtonLabel»«else»Cancel«/if»</button>
+        </div>
+    </div>
+</dialog>

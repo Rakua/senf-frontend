@@ -1,0 +1,24 @@
+
+.col-width-id {
+    width: 2em;
+}
+
+.col-width-content-location {
+    min-width: 50%;
+}
+
+.col-width-keyid {
+    width: 6em;
+}
+
+.col-width-waiting-time {
+    width: 6em;
+}
+
+.col-width-abort-reason {
+    width: 14em;
+}
+
+.col-width-actions {
+    width: 4em;
+}

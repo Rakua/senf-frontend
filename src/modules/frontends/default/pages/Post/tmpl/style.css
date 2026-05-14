@@ -1,0 +1,83 @@
+* {
+    box-sizing: border-box;
+}
+
+.location {
+    grid-area: location;
+}
+
+.waiting-time {
+    grid-area: waiting-time;
+}
+
+.body {
+    grid-area: body;
+    width: 100%;
+}
+
+.actions {
+    grid-area: actions;
+}
+
+.preview {
+    margin: auto;
+    margin-top: 0;    
+    width: var(--comment-width);    
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    clear: both;
+}
+
+
+.labels {
+    margin-top: 2em;
+    font-size: 0.8em;
+    color: var(--col-text-secondary);
+    clear: both;
+}
+
+.preview-label {
+    float: left;
+}
+
+.syntax-label {
+    float: right;
+}
+
+.syntax-error {
+    color: red;
+}
+
+#postSigned img {
+    height: 1em;
+    vertical-align: middle;
+}
+
+#waitingTime {
+    text-align: right;
+}
+
+#body {
+    height: 10em;
+}
+
+input:not([type="checkbox"]),
+textarea,
+select {
+    width: 100%;
+}
+
+button {
+    /* width: 10em; */
+    min-width: 5em;
+}
+
+/* .sdst-button {
+    display: inline-flex;
+    align-items: center;
+}
+
+.sdst-button svg {
+    height: 1.2em;
+    fill: var(--col-text-primary);
+} */

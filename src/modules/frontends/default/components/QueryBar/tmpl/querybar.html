@@ -1,0 +1,16 @@
+«tpl link_style.html»
+«tpl ./style.html»
+
+<div id="querybar" class="query-bar">
+    <div class="normal-gap-horizontal">
+        <sfc-period-select id="periodSelect"></sfc-period-select>
+        <select id="orderSelect">
+            «loop orderPresets»
+                <option value='«json value»'>«val label»</option>
+            «/loop»
+        </select>
+    </div>
+    <div>
+        <div class="display-contents" id="galleryFilterC"></div>
+    </div>
+</div>

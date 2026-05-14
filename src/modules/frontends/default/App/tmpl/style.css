@@ -1,0 +1,131 @@
+:host {
+    height: 100%;
+    display: block;
+}
+
+.layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+    min-height: 100%;
+}
+
+main {
+    background: var(--col-secondary);
+    flex-grow: 1;
+    padding-bottom: 4em;
+}
+
+header {    
+    position: sticky;    
+    top: 0;
+    width: 100%;
+    background: var(--col-primary);
+    height: 2.5em;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.bypass-activated {
+    /* border-bottom: 1px solid red; */
+}
+
+.header-left,
+.header-right {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 2.5em;
+    height: 1.8em;
+}
+
+.header-center {
+    flex-basis: content;
+    height: 1.8em;
+}
+
+.logo {
+    text-align: center;
+}
+
+.logo img {
+    height: 1.8em;
+}
+
+.navi {
+    height: 2.5em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: var(--large-margin);
+}
+
+.navi-item {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.navi-item:hover {
+    cursor: pointer;
+}
+
+.navi-item svg {
+    stroke: var(--col-navi-inactive);
+    fill: var(--col-navi-inactive);    
+    height: 1.8em;
+    width: 1.8em;
+    float: left;
+}
+
+.navi-item a {
+    display: block;
+    position: relative;
+}
+
+.navi-item a,
+.navi-item a:hover,
+.navi-item a:visited {
+    /* color: var(--col-text-primary); */
+    color: var(--col-navi-inactive);    
+}
+
+.navi-item:hover,
+.navi-item:hover a,
+.navi-item:hover a:hover,
+.navi-item:hover a:visited,
+.navi-item:hover svg,
+.active,
+.active a,
+.active a:hover,
+.active a:visited,
+.active svg {
+    color: var(--col-navi-active) !important; 
+    stroke: var(--col-navi-active) !important; 
+    fill: var(--col-navi-active) !important; 
+    background: var(--col-secondary);
+}
+
+.top-text {
+    font-size: 0.6em;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    display: block;
+    padding-left: 2px;
+}
+
+.bot-text {
+    font-size: 0.6em;
+    position: absolute;
+    bottom: 0.4em;
+    left: 100%;
+    display: block;
+    padding-left: 2px;    
+}

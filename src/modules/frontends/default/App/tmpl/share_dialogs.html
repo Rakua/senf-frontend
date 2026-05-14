@@ -1,0 +1,36 @@
+<dialog id="shareLoadingDialog" closedby="none">
+    <div class="center">
+        Loading post from share link<sfc-loading-dots></sfc-loading-dots>
+    </div>
+</dialog>
+
+<dialog id="shareSuccessDialog" closedby="none">
+    <div class="normal-gap full-width">
+        <div id="shareSucessMsg" class="display-contents">
+            <div>
+                Loaded post #<span class="shareSeqNo"></span> into the database.
+            </div>
+            <div>
+                Post #<span class="shareSeqNo"></span> is already in the database.
+            </div>            
+        </div>
+
+        <div class="button-bar">
+            <button class="okButton" autofocus>Go to post</button> <button class="closeButton">Back</button>
+        </div>
+    </div>
+</dialog>
+
+<dialog id="shareFailedDialog" closedby="none">
+    <div class="normal-gap full-width">
+        <div>
+            Failed to load post from share link.
+        </div>
+
+        <div id="shareFailedReason"></div>
+
+        <div class="button-bar">
+            <button class="closeButton">Back</button>
+        </div>
+    </div>
+</dialog>

@@ -1,0 +1,24 @@
+<div class="horizontal-scroll">
+    <table class="«if isSinglePage == false»top-margin«/if» «if showUrl == false»narrow-table«/if»">
+        <thead>
+        <tr>
+            <th style="width:2.5em;">#</th>
+            «if showUrl»<th>Location</th>«/if»
+            <th style="width: 6em">Waiting time</th>
+            <th «if showUrl»style="width: 10em"«/if»>Poster</th>
+            <th style="width: 10em">Date</th>            
+        </tr>
+        </thead>
+        <tbody>
+        «loop echos»
+        <tr>
+            <td class="center"><a href="«val ciHref»">«val seqNo»</a>«tpl is_new.html»</td>
+            «if -0/showUrl»<td><sfc-uri value="«val location»"></sfc-uri></td>«/if»
+            <td class="right"><sfc-waiting-time value="«val waitingTime»"></sfc-waiting-time></td>
+            <td><sfc-poster value="«if posterKind == 'keyid'»«val keyId»«else»«val posterKind»«/if»" «if isYou»isyou«/if»></sfc-poster></td>
+            <td class="right"><sfc-date value="«val postedOn»"></sfc-date></td>            
+        </tr>
+        «/loop»
+        </tbody>
+    </table>
+</div>

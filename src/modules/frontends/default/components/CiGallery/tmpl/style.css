@@ -1,0 +1,18 @@
+:host {
+    display: block;
+}
+
+sfc-tabs::part(pages) {
+    margin-top: 2em;
+}
+
+.query-bar {    
+    width: var(--compact-width);
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: normal;
+    align-content: normal;
+}

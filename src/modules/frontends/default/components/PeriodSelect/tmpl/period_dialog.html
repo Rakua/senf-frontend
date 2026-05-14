@@ -1,0 +1,38 @@
+<dialog id="periodDialog">
+    <div class="normal-gap full-width">
+        <div>
+            <sfc-tabs id="periodDialogTab" parameter="tdt" hidefromurl>
+                <sfc-tab name="youngerThan">
+                    <sfc-tab-title style="font-size: 1rem;">Younger than</sfc-tab-title>
+                    <sfc-tab-contents class="top-margin centered-div" style="min-height: 5em;">
+                        <div>
+                            <input type="number" value="3" name="value" class="number-input">
+                            <select name="unit">
+                                <option value="hour">hours</option>
+                                <option value="day">days</option>
+                                <option value="week">weeks</option>
+                                <option value="month">months</option>
+                                <option value="year">years</option>
+                            </select>
+                        </div>
+                    </sfc-tab-contents>
+                </sfc-tab>
+                <sfc-tab name="interval">
+                    <sfc-tab-title style="font-size: 1rem;">Interval</sfc-tab-title>
+                    <sfc-tab-contents class="top-margin normal-gap" style="min-height: 5em;">
+                        <div class="center">
+                            <input type="date" min="2026-01-01" name="start">
+                        </div>
+                        <div class="center">
+                            <input type="date" min="2026-01-01" name="end">
+                        </div>
+                    </sfc-tab-contents>
+                </sfc-tab>           
+            </sfc-tabs>
+        </div>
+        <div class="button-bar">
+            <button class="okButton" autofocus>Apply</button>
+            <button class="closeButton" autofocus>Cancel</button>
+        </div>
+    </div>
+</dialog>

@@ -1,0 +1,59 @@
+«tpl ./style.html»
+<div class="horizontal-scroll top-margin">
+<table>
+    <thead>
+        <tr>
+            <th class="col-width-subject">File</th>
+            <th class="col-width-number" title="Posts addded to the database that were not already in it">New</th>
+            <th class="col-width-number2" title="Posts not added because they were already in the database">Skipped</th>
+            <th class="col-width-number">Invalid</th>
+            <th class="col-width-number">Size</th>
+            <th class="col-width-fstatus">Status</th>
+            <th class="col-width-actions"></th>
+        </tr>
+    </thead>
+    <tbody>
+«loop items»
+        <tr>
+            <td>
+                <div class="single-line-text">
+                    <a href="«raw locationHref»" class="routed">
+                    «if subject/type == "file"»
+                        «val subject/filename»
+                    «else»
+                        «val subject/urlWithoutScheme»
+                    «/if»
+                    </a>
+                </div>
+            </td>
+            <td class="right">«val progress/itemsAdded»</td>
+            <td class="right">«val progress/itemsSkipped»</td>
+            <td class="right">«val progress/itemsInvalid»</td>
+            <td class="right"><sfc-byte-size value="«val progress/processedBytes»"></sfc-byte-size></td>
+            <td class="center">
+                «if failedReason»
+                    <span title="«val failedReason»">«val status»</span>
+                «else»
+                    «val status»
+                «/if»                
+            </td>
+            <td class="center">
+                «if canRetry»
+                <button data-jobid="«raw jobId»" class="retryButton action-button">🔄</button>
+                «/if»
+            </td>
+        </tr>
+«empty»
+        <tr>
+            <td colspan="7" class="center">No files finished loading recently</td>
+        </tr> 
+«/loop»
+    </tbody>
+</table>
+</div>
+
+<!--
+«/*»
+«if failedReason»<br><span class="red">«val failedReason»</span>«/if»
+«*/»
+-->

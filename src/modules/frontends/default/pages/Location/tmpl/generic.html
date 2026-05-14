@@ -1,0 +1,22 @@
+<div class="content-container top-margin secondary-text normal-gap">
+    «if mode == "uri"»«if isTrustedLocation»«if mediaType»«tpl ./media.html»«/if»«/if»«/if»
+    <div class="center primary-text-color">
+        <!-- no soft breaking? -->
+        «if linkUrl»
+        <a href="«val url»" target="_blank" class="remember-visited">«val url»</a>
+        «else»
+        «val url»
+        «/if»
+    </div>
+    <div class="info-line">
+        <div>
+            «loop echos»<sfc-waiting-time value="«val value»"></sfc-waiting-time>«sep» / «/loop»
+        </div>
+
+        <div>
+            «if domainPath»<a id="domainA" class="routed" href="«val domainPath»">Domain</a> «tpl spacer.html»«/if»
+            <a id="newA" class="routed" href="«val newCommentPath»">New</a>
+            «if mode == "uri"»«if isTrustedLocation == false»«if mediaType»«tpl spacer.html» <a id="trustA" href="javascript:;">Trust</a>«/if»«/if»«/if»
+        </div>
+    </div>
+</div>

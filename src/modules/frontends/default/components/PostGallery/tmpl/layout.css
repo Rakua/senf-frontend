@@ -1,0 +1,11 @@
+/* sfc-paginated::part(post-item) {    
+    width: 40em;
+} */
+
+sfc-paginated::part(post-item-container), sfc-paginated::part(post-item-container-last) {
+    border-top: 1px dashed var(--col-primary);
+}
+
+sfc-paginated::part(post-item-container-last) {
+    border-bottom: 1px dashed var(--col-primary);
+}

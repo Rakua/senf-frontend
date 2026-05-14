@@ -1,0 +1,15 @@
+<div class="content-container top-margin secondary-text normal-gap">
+    <div class="center"> <a href="«val url»" target="_blank" class="remember-visited">«val url»</a> </div>
+    <div class="info-line"> 
+        <div>
+            «if status == "completed"»
+                added «val added» new URL«if added != 1»s«/if» during crawl
+            «else»
+                Status: crawl «val status»
+            «/if»            
+        </div>
+        <div>
+            finished <sfc-date value="«val updatedOn»"></sfc-date>
+        </div>
+    </div>
+</div>

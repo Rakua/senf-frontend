@@ -1,0 +1,30 @@
+§<abnf 
+Start 
+  = (EmptyBlock | TextBlock | CodeBlock | MathBlock | QuoteBlock | SpoilerBlock)+
+
+EmptyBlock = (Ws? Nl)+
+TextBlock  = (TextLine Nl)+
+TextLine   = (Plain | LineBreak | Uri | Code | Math | Emphasis | Spoiler)+
+
+Plain     = (Ws? (Txt | Esc) Ws?)+
+LineBreak = Ws? "§§n" Ws?
+Uri       = Ws? "§§@" (Txt | Esc)+ Ws?
+Code      = Ws? "§§`" CodeLanguage? " " (Plain | Ws) "§§`" Ws?
+Math      = Ws? "§§$" Plain                          "§§$" Ws?
+Emphasis  = Ws? "§§!" Plain                          "§§!" Ws?
+Spoiler   = Ws? "§§?" (Plain | Uri | Code | Math | Emphasis)+ "§§?" Ws?
+
+CodeBlock    = Ws? "§§<"  CodeLanguage? Ws? Nl Content "§§>"  Ws? Nl
+MathBlock    = Ws? "§§["  Content                      "§§]"  Ws? Nl
+QuoteBlock   = Ws? "§§bq" Start Ws?                    "§§eq" Ws? Nl
+SpoilerBlock = Ws? "§§bs" Start Ws?                    "§§es" Ws? Nl
+
+Content = (Txt | Ws | Nl | Esc)+
+
+CodeLanguage    = "c" | "php" | "html" | "css" | "java" | "cpp" | ...
+
+Nl  = "\n"
+Ws  = [ \t]+
+Txt = [^\n \t§§]+
+Esc = "§§§§"
+§>

@@ -1,0 +1,37 @@
+:host {
+    display: contents;
+}
+
+/* sfc-tabs::part(pages) {
+    margin-top: 2em;
+} */
+
+.hidden-query-bar  {
+    width: var(--compact-width);
+    margin: auto;
+    text-align: right;
+    height: 2.25em;
+}
+
+.query-bar {    
+    height: 2.25em;
+    width: var(--compact-width);
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: normal;
+    align-content: normal;
+}
+
+.filter-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+/* .filter-list fieldset {
+    display: block;
+} */

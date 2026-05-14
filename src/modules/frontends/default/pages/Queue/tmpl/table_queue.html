@@ -1,0 +1,72 @@
+«tpl link_style.html»
+<style>
+    .page-container {
+        margin-top: 1em;
+        margin-bottom: 2em;
+        width: var(--content-container-width);
+        margin: auto;
+    }
+
+    .tab-navi {
+        display: flex;
+        justify-content: space-evenly;
+        /* flex-flow: wrap; */
+        flex-wrap: wrap;
+    }
+
+    .tab-navi>div {
+        font-size: 1.5em;
+    }
+
+    .tab-navi a {
+        color: var(--text-color);
+    }
+
+    table {
+        width: 100%;
+    }
+
+    tbody>tr {
+        height: 3.5em;
+    }
+
+    div.single-line-text {
+        width: 95%;
+    }
+
+    .col-width-id {
+        width: 2em;
+    }
+
+    .col-width-content-location {
+        min-width: 50%;
+    }
+
+    .col-width-keyid {
+        width: 6em;
+    }
+
+    .col-width-waiting-time {
+        width: 6em;
+    }
+
+    .col-width-actions {
+        width: 2em;
+    }    
+
+</style>
+
+<div class="top-margin">
+    <div class="tab-navi">
+        <div id="enqueuedLink"><a href="#page=queue&tab=enqueued">Enqueued (<span id="enqueuedSize"></span>)</a></div>
+        <div id="postedLink"><a href="#page=queue&tab=posted">Posted (<span id="postedSize"></span>)</a>
+        </div>
+        <div id="abortedLink"><a href="#page=queue&tab=aborted">Aborted (<span id="abortedSize"></span>)</a></div>
+    </div>
+
+    <div class="tab-pages top-margin">
+        <div id="enqueuedTab" class="page-container display-none"></div>
+        <div id="postedTab" class="page-container display-none"></div>
+        <div id="abortedTab" class="page-container display-none"></div>
+    </div>
+</div>

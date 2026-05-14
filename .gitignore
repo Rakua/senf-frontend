@@ -1,0 +1,8 @@
+.vscode/**
+bin/**
+dist/**
+src/assets/js/**
+!src/assets/js/readme.txt
+cert.pem
+key.pem
+todo.md

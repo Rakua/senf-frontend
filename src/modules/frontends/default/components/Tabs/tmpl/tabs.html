@@ -1,0 +1,13 @@
+«tpl link_style.html»
+«tpl ./style.html»
+
+<div part="container">
+    <div class="«val classNames/navi»" part="navi">
+        «loop tabs»        
+        <button class="«val -0/classNames/button»" id="«val titleId»" name="«val tabName»"></button>
+        «/loop»
+    </div>
+    <div class="«val classNames/pages»" part="pages">
+        «loop tabs»<div id="«val contentsId»" class="«val -0/classNames/page» «val -0/classNames/hide»"></div>«/loop»
+    </div>
+</div>

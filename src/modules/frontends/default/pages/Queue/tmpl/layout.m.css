@@ -1,0 +1,33 @@
+/*table {
+    border-left: 0 !important;
+    border-right: 0 !important;
+}*/
+
+.sideways {
+    text-orientation: sideways;
+    writing-mode: vertical-rl;
+}
+
+.action-button {
+    font-size: 0.8em;
+    padding: 0.5em;
+    margin-left: 0em;
+    margin-right: 0em;
+}
+
+.col-width-id {
+    width: 1.2em;
+    height: 5em;
+}
+
+.col-width-content-location {
+    min-width: 70%;
+}
+
+.col-width-actions {
+    width: 5em;
+}
+
+.col-width-actions2 {
+    width: 2.5em;
+}

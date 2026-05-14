@@ -1,0 +1,25 @@
+§@https://senf.in
+
+§! emphasis §!
+
+§? spoiler §?
+
+§$ f(x) = x^2 §$
+
+§`c return 0;§`
+
+§[ \sum_{i=1}^n i = \frac{n(n+1)}{2} §]
+
+§<java
+public static void main(String[] args) {
+  System.out.println("Hello world");
+}
+§>
+
+§bq 
+Some quote.
+§eq
+
+§bs 
+Some spoiler.
+§es

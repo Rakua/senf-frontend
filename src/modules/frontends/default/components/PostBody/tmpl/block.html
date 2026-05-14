@@ -1,0 +1,8 @@
+«if isEmpty == false»
+    «if type == "TextBlock"» «tpl ./text_block.html»
+    «elseif type == "CodeBlock"» «tpl ./block_code.html»
+    «elseif type == "MathBlock"» «tpl ./block_math.html»
+    «elseif type == "QuoteBlock"» «tpl ./block_quote.html»
+    «elseif type == "SpoilerBlock"» «tpl ./block_spoiler.html»
+    «/if»
+«/if»

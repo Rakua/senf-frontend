@@ -1,0 +1,19 @@
+main {
+    width: 100%;
+}
+
+
+.header-right {
+    display: none;
+}
+
+.navi {
+    gap: 1em;
+    padding-right: 1em;    
+}
+
+.navi-item {
+    padding-left: 0.7em;
+    padding-right: 0.7em;
+}
+

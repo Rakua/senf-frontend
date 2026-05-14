@@ -1,0 +1,16 @@
+<dialog id="importDialog">
+    <div class="normal-gap full-width">
+        <div>
+            <h1>Import settings</h1>
+            Choose what to import from file:
+        </div>
+
+        «tpl ./setting_types.html»
+
+        <div class="button-bar">
+            <button class="okButton">Import file</button>
+            <button class="closeButton" autofocus>Cancel</button>
+        </div>        
+    </div>
+</dialog>
+<input type="file" id="importFileInput" class="display-none">

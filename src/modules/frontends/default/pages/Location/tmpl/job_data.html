@@ -1,0 +1,25 @@
+<div class="content-container top-margin secondary-text normal-gap">
+    <div class="center"> 
+        «if type == "url"»
+            <a href="«val file»" target="_blank" class="remember-visited">«val file»</a> 
+        «else»
+            «val file»
+        «/if»
+        
+    </div>
+    <div class="info-line"> 
+        <div>
+            «if status == "completed"»
+                new / skipped / invalid: «val added» / «val skipped» / «val invalid»
+            «else»
+                Status: loading «val status»
+            «/if»            
+        </div>
+        <div>
+            finished <sfc-date value="«val updatedOn»"></sfc-date> «tpl spacer.html» <sfc-byte-size value="«val size»"></sfc-byte-size>
+        </div>
+    </div>
+    <div class="center">
+        <label><input type="checkbox" id="showOnlyNewPosts"> show only new posts</label>
+    </div>
+</div>
