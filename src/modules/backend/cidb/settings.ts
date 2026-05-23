@@ -19,7 +19,7 @@ const settings = {
         aliases: { default: [] as AliasSettingType, guard: aliasesGuard() },
 
         archives: { default: defaultArchives },
-        recrawlInterval: { default: 3000000 },
+        recrawlInterval: { default: 300000 },
         uciFileExtensions: { default: [".jsonl"] },
         abortCheckAfterNIterations: { default: 100 },
 

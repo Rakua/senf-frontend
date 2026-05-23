@@ -1,14 +1,14 @@
 export {
     DeviceType, mainSettings,
-    registeredFrontends, RegisteredFrontend,    
+    registeredFrontends, RegisteredFrontend,
     devMode, enableDevMode, disableDevMode, preferredTmpl, dateToString,
     darkModeEnabled, toggleDarkMode, toggleLayout, initBindSettingsToDom,
     isTrustedLocation
 }
 
 import { newSettings } from "./modules/libs/etc/settings.js"
-import { DeviceType, guessDevice } from "./modules/libs/etc/misc.js"
-import { guards, literalGuard, toArrayGuard } from "./modules/libs/etc/guard.js"
+import { alwaysShowScrollbar, DeviceType, guessDevice } from "./modules/libs/etc/misc.js"
+import { guard, guards, literalGuard, toArrayGuard, unionType } from "./modules/libs/etc/guard.js"
 import { onChange } from "./modules/libs/basic/reactive.js"
 
 type RegisteredFrontend = typeof registeredFrontends[number]
@@ -31,13 +31,14 @@ const wtGuard = toArrayGuard(guards.positiveInteger)
 const mainSettings = newSettings("main", {
     platformName: { default: "senf.in" },
     serverUrl: { default: "https://a.senf.in", guard: guards.url },
-    appUrl: { default: "https://app.senf.in", guard: guards.url },    
+    appUrl: { default: "https://app.senf.in", guard: guards.url },
     websiteUrl: { default: "https://senf.in", guard: guards.url },
     repoUrl: { default: "https://repo.senf.in", guard: guards.url },
     sdstUrl: { default: "https://sdstool.app", guard: guards.url },
 
     frontend: { default: registeredFrontends[0] as RegisteredFrontend, guard: frontendGuard },
     colorScheme: { default: colorSchemes[0] as ColorScheme, guard: colorSchemeGuard },
+    alwaysShowScrollbar: { default: true },
 
     signRequestViaFragmentId: { default: false },
     acceptedAlgorithms: { default: ["ed25519", "ed448", "secp256k1", "prime256v1", "brainpoolP256r1", "brainpoolP256t1"] },
@@ -59,7 +60,7 @@ const mainSettings = newSettings("main", {
         },
     },
 
-    trustedLocations: { default: ["https://archive.senf.in/"], description: "Media content from trusted domains is embedded in the location page. Add 'http' as trusted domain to trust all domains." },
+    trustedLocations: { default: [] as string[], guard: guard([""]), description: "Media content from trusted domains is embedded in the location page. Add 'http' as trusted domain to trust all domains." },
 })
 
 const devMode = () => localStorage.getItem("devMode") !== null

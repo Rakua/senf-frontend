@@ -1,5 +1,5 @@
 export {
-    VerifyUserCi, VerifyUserCiInvalid, VerifyUserCiValid, LoaderContext, VerifyUserCiParameters,    
+    VerifyUserCi, VerifyUserCiInvalid, VerifyUserCiValid, LoaderContext, VerifyUserCiParameters,
     loadUserCis, verifyUserCi, crawlArchive, getSizeFromHeader
 }
 
@@ -139,14 +139,14 @@ async function loadUserCis(context: LoaderContext, stream: ReadableStream, sourc
 
         //check if object is a stub and process accordingly
         if (hasType(obj, stubExample, { value: null })) {
-            if(stubsDisabled) {
+            if (stubsDisabled) {
                 lg.debug("Line %s is a stub but ignored since stubs are disabled: %O", progress.curLine, obj)
                 progress.itemsInvalid++ //count as invalid
                 continue
             }
             lg.debug("Line %s is a stub: %O", progress.curLine, obj)
             await bufferStubs.load({ stub: obj, category: category })
-            continue            
+            continue
         }
 
         //process line as ci
@@ -192,6 +192,7 @@ async function verifyUserCi(parameters: VerifyUserCiParameters, ciObj: any, lg: 
 
     //time smaller than inauguration time or larger than current server time -> invalid
     const ciTimestamp = ciMetadata(ci).timestamp
+
     if (ciTimestamp < parameters.inaugurationTimestamp[chain])
         return { type: "invalid", code: "TIMESTAMP_BEFORE_INAUG", reason: "CI has timestamp before inauguration CI (%O)", args: [ciTimestamp] }
 
@@ -206,7 +207,7 @@ async function verifyUserCi(parameters: VerifyUserCiParameters, ciObj: any, lg: 
 
     if (key.keyId != ci.signatures[0].keyId)
         return { type: "invalid", code: "PLATFORM_KEYID_MISMATCH", reason: "KeyId of platform signature of CI is not matching expected on (got %s, expected: %s)", args: [key.keyId, ci.signatures[0].keyId] }
-    
+
     if (ciMetadata(ci).seqNo <= (bypassChecks(chain) ?? 0)) {
         lg.security("Bypassing signature check for CI %O", ci)
         return { type: "valid", ci: ci as UserCi }
@@ -240,7 +241,7 @@ async function verifySignature(ci: any, key: PlatformKey): Promise<VerifySignatu
     return { type: "valid" }
 }
 
-//does not support href attributes that span multiple lines, e.g. `href=\n"/a.jsonl"`
+//does not support href attributes that span multiple lines or not enclosed in double quotes '"'
 async function crawlArchive(context: LoaderContext, stream: ReadableStream<Uint8Array<ArrayBufferLike>>, input: CrawlJobInDb, totalBytes: number | null): Promise<LoaderOutput | undefined> {
     const lg = context.lg
 

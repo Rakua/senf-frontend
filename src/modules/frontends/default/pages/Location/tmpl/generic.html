@@ -2,7 +2,7 @@
     «if mode == "uri"»«if isTrustedLocation»«if mediaType»«tpl ./media.html»«/if»«/if»«/if»
     <div class="center primary-text-color">
         <!-- no soft breaking? -->
-        «if linkUrl»
+        «if isHttp»
         <a href="«val url»" target="_blank" class="remember-visited">«val url»</a>
         «else»
         «val url»

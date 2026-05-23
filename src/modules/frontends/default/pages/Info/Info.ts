@@ -155,7 +155,7 @@ class InfoPage extends HTMLElement {
             this.#ui.importFileInput().click()
         })
         this.#ui.importFileInput().addEventListener("cancel", () => {
-            lg.info("file input cancel")
+            lg.debug("file input cancel")
         })
         this.#ui.importFileInput().addEventListener("change", () => {
             if (this.#ui.importFileInput().files?.length !== 1) return

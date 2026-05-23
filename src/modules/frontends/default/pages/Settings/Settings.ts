@@ -7,12 +7,12 @@ import { pageTitleR } from "../../App/App.js"
 import { ExposedPromise, fromJson, isNumber, toNumber } from "../../../../libs/basic/misc.js"
 import { onChange } from "../../../../libs/basic/reactive.js"
 import { exportSettings, importSettings, resetSettings, Setting } from "../../../../libs/etc/settings.js"
-import { anchorToPlainTextDownload, dateInFilename, isHttpUrl, setSelectValue } from "../../../../libs/etc/misc.js"
+import { alwaysShowScrollbar, anchorToPlainTextDownload, dateInFilename, isHttpUrl, setSelectValue } from "../../../../libs/etc/misc.js"
 import { ciGallerySettings } from "../../components/CiGallery/CiGallery.js"
 import { posterSettings } from "../../components/Poster/Poster.js"
 import { settings as cidbSettings } from "../../../../backend/cidb/settings.js"
 import { watchDialogs } from "../../../../libs/etc/dialogs.js"
-import { addYourAnonCi, addYourKeyId, aliasOf, setAlias } from "../../../../backend/cidb/cidb.js"
+import { addYourAnonCi, addYourKeyId, aliasOf, crawlArchive, setAlias } from "../../../../backend/cidb/cidb.js"
 import { Prompt } from "../../components/Prompt/Prompt.js"
 import { locationPageSettings } from "../Location/Location.js"
 
@@ -47,6 +47,7 @@ class SettingsPage extends HTMLElement {
         showYou: () => this.#shadow.getElementById("showYou") as HTMLInputElement,
         oldestFirst: () => this.#shadow.getElementById("oldestFirst") as HTMLInputElement,
         showQueryBar: () => this.#shadow.getElementById("showQueryBar") as HTMLInputElement,
+        alwaysShowScrollbar: () => this.#shadow.getElementById("alwaysShowScrollbar") as HTMLInputElement,
 
         customOption: (el: HTMLSelectElement) => el.querySelector<HTMLOptionElement>("option[value='custom']")!,
 
@@ -121,6 +122,10 @@ class SettingsPage extends HTMLElement {
                 ui: this.#ui.showLastItemOfPreviousPage(),
                 setting: ciGallerySettings.showLastItemOfPreviousPage
             },
+            {
+                ui: this.#ui.alwaysShowScrollbar(),
+                setting: mainSettings.alwaysShowScrollbar
+            },            
         ]
         const numberSettings = [
             {
@@ -203,7 +208,7 @@ class SettingsPage extends HTMLElement {
         onChange(cidbSettings.archives, (nv) => {
             this.#ui.archivesCount().innerText = nv.length.toString()
         })
-        const promptMsg = "Archive URL (don't forget a trailing '/' if the archive is a directory):"
+        const promptMsg = "Archive URL (don't forget a trailing '/' for directories):"
         const promptArchiveEl = new Prompt(promptMsg, { validator: x => isHttpUrl(x.trim()), placeholder: "e.g. https://archive.senf.in/ or multiline paste" })
         this.#shadow.appendChild(promptArchiveEl)
         this.#ui.addArchiveButton().addEventListener("click", async () => {
@@ -231,7 +236,9 @@ class SettingsPage extends HTMLElement {
                     continue
                 }
 
-                curArchives.push({ url: url.href })
+                const arch = { url: url.href }
+                curArchives.push(arch)
+                crawlArchive(arch)
             }
             cidbSettings.archives.set(curArchives)
         })
@@ -242,7 +249,7 @@ class SettingsPage extends HTMLElement {
         onChange(mainSettings.trustedLocations, (nv) => {
             this.#ui.trustedLocationCount().innerText = nv.length.toString()
         })
-        const promptMsg = "Trusted location URL prefix (media from trusted locations is embedded in the app):"
+        const promptMsg = "Trusted location URL prefix:"
         const promptEl = new Prompt(promptMsg, { placeholder: "e.g. https://archive.senf.in/ or multiline paste" })
         this.#shadow.appendChild(promptEl)
         this.#ui.addTrustedLocationButton().addEventListener("click", async () => {
@@ -262,7 +269,7 @@ class SettingsPage extends HTMLElement {
                 curTrustedLocations.push(trustedUrl)
             }
             mainSettings.trustedLocations.set(curTrustedLocations)
-        })        
+        })
         this.#ui.removeTrustedLocationButton().addEventListener("click", this.removeTrustedLocations.bind(this))
     }
 
@@ -421,14 +428,9 @@ class SettingsPage extends HTMLElement {
             const archivesToRemove = Array.from(this.#ui.archiveList().querySelectorAll<HTMLInputElement>("input:checked").entries()).map(([_i, el]) => el.value)
             lg.debug("archives to remove: %O", archivesToRemove)
             const curArchives = cidbSettings.archives.get()
-            const newArchives = curArchives.filter(x => !archivesToRemove.includes(x.url))
-            if (newArchives.length == 0) {
-                lg.debug("resetting archives")
-                cidbSettings.archives.unset()
-            } else {
-                lg.debug("setting new archives after removing: %O", newArchives)
-                cidbSettings.archives.set(newArchives)
-            }
+            const newArchives = curArchives.filter(x => !archivesToRemove.includes(x.url))            
+            lg.debug("setting new archives after removing: %O", newArchives)
+            cidbSettings.archives.set(newArchives)
             this.#ui.removeArchiveDialog().close()
         }
 

@@ -6,9 +6,10 @@ export {
     dateInFilename,
     getInputDate, setInputDate, tristateCheckbox,
     isCiUrn, isHttpUrl,
-    showEl, hideEl, showChildEl, setSelectValue, hasScrollbar, inElementsBoundingBox,
+    showEl, hideEl, showChildEl, setSelectValue, hasScrollbar, alwaysShowScrollbar, inElementsBoundingBox,
     anchorToPlainTextDownload, anchorToBlobDownload,
-    serializeCatch, mediaTypeFromUrl
+    serializeCatch, mediaTypeFromUrl,
+
 }
 
 import { round, splitAt, toJson, toNumber } from "../basic/misc.js"
@@ -168,6 +169,17 @@ function showChildEl(parent: Element, child: Element | number) {
 function hasScrollbar() {
     return document.documentElement.scrollHeight > document.documentElement.clientHeight
 }
+
+function alwaysShowScrollbar(enable: boolean) {
+    if (enable) {
+        document.documentElement.style.overflowY = "scroll"
+        document.documentElement.style.scrollbarGutter = "stable"
+    } else {
+        document.documentElement.style.overflowY = ""
+        document.documentElement.style.scrollbarGutter = ""
+    }
+}
+
 //#endregion
 
 //#region etc

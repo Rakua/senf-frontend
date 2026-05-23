@@ -10,6 +10,8 @@ import { init as initTab } from "./modules/libs/etc/tab.js"
 import { init as initTime } from "./modules/backend/time.js"
 import { init as initPost } from "./modules/backend/post/post.js"
 import { bypassChecksActive, bypassChecksData, init as initCidb } from "./modules/backend/cidb/cidb.js"
+import { alwaysShowScrollbar } from "./modules/libs/etc/misc.js"
+import { onChange } from "./modules/libs/basic/reactive.js"
 
 declare global {
     interface Window {
@@ -28,8 +30,8 @@ function main() {
     lg.info("main() (devMode = %O)", devMode())
     //hide debug messages in non-dev mode
     if (!devMode()) DefaultLogger.muteLevel("debug")
-    if(bypassChecksActive()) lg.security("Bypassing CI checks for %O", bypassChecksData())
-    
+    if (bypassChecksActive()) lg.security("Bypassing CI checks for %O", bypassChecksData())
+
     //init     
     if (devMode()) initDev()
     initBindSettingsToDom()
@@ -46,6 +48,8 @@ function main() {
     const frontend = mainSettings.frontend.get()
     lg.info("Frontend: %s", frontend)
     import(`./modules/frontends/${frontend}/main.js`)
+
+    onChange(mainSettings.alwaysShowScrollbar, (nv) => alwaysShowScrollbar(nv))
 
     if (devMode()) devTest()
 }

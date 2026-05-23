@@ -253,13 +253,11 @@ class LocationPage extends HTMLElement {
                         const url = mode.url
                         const echos = await echoStats("uri", url)
 
-                        const linkUrl = isHttpUrl(url)
-
                         let mediaType = mediaTypeFromUrl(url) ?? undefined
 
                         this.#ui.head().innerHTML = tmpl("generic.html", {
                             url: url.href,
-                            linkUrl: isHttpUrl,
+                            isHttp: isHttpUrl(url),
                             mediaType: mediaType,
                             isTrustedLocation: isTrustedLocation(url.href),
                             domainPath: isHttpUrl(url) ? LocationPage.path({ type: "prefix", url: url }).toFragmentId() : undefined,

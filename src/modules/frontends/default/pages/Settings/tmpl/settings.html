@@ -54,7 +54,7 @@
 
 <div class="normal-gap content-container settings">
     <div>
-        <label>Archives (<span id="archivesCount"></span>)</label>
+        <label title="An archive is a webpage (usually a directory listing) that contains links to jsonl-files with comments. The app regularly checks these archives and downloads new files.">Archives (<span id="archivesCount"></span>)</label>
         <div style="float:right">
             <button id="addArchiveButton">Add</button>
             &nbsp;
@@ -63,7 +63,7 @@
     </div>
 
     <div>
-        <label>Trusted locations (<span id="trustedLocationCount"></span>)</label>
+        <label title="Media from trusted locations is embedded in the app.">Trusted locations (<span id="trustedLocationCount"></span>)</label>
         <div style="float:right">
             <button id="addTrustedLocationButton">Add</button>
             &nbsp;
@@ -96,7 +96,7 @@
     </div>
 
     <div>
-        <label>
+        <label title="The query bar (period, order, filter) is only shown on the home and places page by default. Enable this option to display it everywhere.">
             Always show query bar
             <input type="checkbox" id="showQueryBar">
         </label>
@@ -122,6 +122,13 @@
             <input id="showLastItemOfPreviousPage" type="checkbox">
         </label>
     </div>
+
+    <div>
+        <label title="Enable this to prevent layout displacement due to the scrollbar (dis)appearing in Chromium-based browsers.">
+            Always show scrollbar
+            <input type="checkbox" id="alwaysShowScrollbar">
+        </label>
+    </div>    
 
     <div class="button-bar top-margin">
         <button id="exportButton">Export</button>

@@ -59,7 +59,7 @@ class SyntaxPage extends HTMLElement {
         this.#bodyR().onChange(() => this.#updatePreview())
         this.#ui.examplesLink().addEventListener("click", () => this.#setExample("examples.txt"))
         this.#ui.grammarLink().addEventListener("click", () => this.#setExample("grammar.txt"))
-        //this.#ui.syntaxLink().addEventListener("click", () => history.back())
+        this.#ui.syntaxLink().addEventListener("click", () => history.back())
 
         document.addEventListener("keydown", this.#sectionSignHotkey.bind(this))
 

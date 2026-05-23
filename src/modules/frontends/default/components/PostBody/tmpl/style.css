@@ -79,7 +79,7 @@ blockquote {
     margin-left: 0.5em;
     padding-left: 0.5em;
     border-left: 2px solid var(--col-primary);
-    width:fit-content;    
+    /* overflow-x: auto; */
 }
 
 .quote-line {

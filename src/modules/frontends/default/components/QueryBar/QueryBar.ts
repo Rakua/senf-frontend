@@ -8,7 +8,7 @@ import { ExposedPromise, fromJson, MakeOptional, toJson } from "../../../../libs
 import { addListener as addRouterListener, removeListener as removeRouterListener, currentNaviPath, navigateWithinPage, NaviPath, navigateTo } from "../../../../libs/etc/router.js"
 import { setSelectValue } from "../../../../libs/etc/misc.js"
 import { fromSerializableQuery, Query, SerializableQuery } from "../../../../backend/cidb/cidb.js"
-import { onChange, ReactiveAtom, reactiveExpression, ReactiveValue } from "../../../../libs/basic/reactive.js"
+import { onChange, ReactiveAtom, reactiveExpression, ReactiveValue, RemovableListenerId } from "../../../../libs/basic/reactive.js"
 import { CiGalleryQuery } from "../CiGallery/CiGallery.js"
 import { guard, typeOf, unionType } from "../../../../libs/etc/guard.js"
 import { canonicalJsonStringify, equivalentJsonValue } from "../../../../libs/etc/sdst.js"
@@ -152,6 +152,8 @@ class QueryBar<T extends BaseQueryEntity> extends HTMLElement {
 
     #routerListenerId: string
 
+    #rlids: RemovableListenerId[] = []
+
     #contentLoaded = new ExposedPromise<void>()
     initialContentLoaded = this.#contentLoaded.promise
 
@@ -187,7 +189,8 @@ class QueryBar<T extends BaseQueryEntity> extends HTMLElement {
             if (val == "custom") return
             this.#orderAtom.set(fromJson(val) as any)
         })
-        onChange(this.#orderAtom, nv => setSelectValue(this.#ui.orderSelect(), toJson(nv), orderToLabel(this.entity, nv)))
+        const rlids1 = onChange(this.#orderAtom, nv => setSelectValue(this.#ui.orderSelect(), toJson(nv), orderToLabel(this.entity, nv)))
+
 
         //add filter dialog
         const galleryFilterEl = new GalleryFilter(this.entity)
@@ -195,7 +198,7 @@ class QueryBar<T extends BaseQueryEntity> extends HTMLElement {
         this.#ui.galleryFilterC().replaceChildren(galleryFilterEl)
 
         //update period/order/filter atoms from live query
-        onChange(this.#liveQuery, q => {
+        const rlids2 = onChange(this.#liveQuery, q => {
             lg.debug("update UI from live query: %O", q)
 
             //only set filters in UI that are part of URL parameter
@@ -209,8 +212,8 @@ class QueryBar<T extends BaseQueryEntity> extends HTMLElement {
 
         //update URL query parameter from period/order/filter atoms
         const rexpr = reactiveExpression([this.#ui.periodSelect(), this.#orderAtom, this.#ui.galleryFilter()], (period, order, filter) => ({ period, order, filter }))
-        rexpr.onChange(queryParam => {
-            if((currentNaviPath().getPage() ?? "home") != this.page) {
+        const rlids3 = rexpr.onChange(queryParam => {
+            if ((currentNaviPath().getPage() ?? "home") != this.page) {
                 lg.debug("different page, don't change url anymore, %O != %O", this.page, currentNaviPath().getPage() ?? "home")
                 return
             }
@@ -224,17 +227,24 @@ class QueryBar<T extends BaseQueryEntity> extends HTMLElement {
             lg.debug("queries not equivalent")
 
             const cnp = currentNaviPath()
-            cnp.set(this.parameter.query, queryParam)
+            if (equivalentQuery(newQuery, this.#baseQuery)) {
+                lg.debug("equiv to base query, remove URL param")
+                cnp.unset(this.parameter.query)
+            } else {
+                cnp.set(this.parameter.query, queryParam)
+            }            
             navigateWithinPage(cnp)
         })
 
+        this.#rlids = this.#rlids.concat(rlids1, rlids2, rlids3)
+
         //update live query from URL query parameter
         this.#routerListenerId = addRouterListener((ev) => {
-            if((currentNaviPath().getPage() ?? "home") != this.page) {
+            if ((currentNaviPath().getPage() ?? "home") != this.page) {
                 lg.debug("different page, don't change url anymore, %O != %O", this.page, currentNaviPath().getPage() ?? "home")
                 return
             }
-            
+
             if (toJson(ev.data.oldPath.get(this.parameter.query)) == toJson(ev.data.newPath.get(this.parameter.query))) return
             const q = this.#buildQuery()
             lg.debug("update live query from URL query: %O", q)
@@ -285,7 +295,11 @@ class QueryBar<T extends BaseQueryEntity> extends HTMLElement {
     }
 
     disconnectedCallback() {
+        lg.debug("removing listeners")
         removeRouterListener(this.#routerListenerId)
+        for(const rlid of this.#rlids) {
+            rlid.removeListener(rlid.listenerId)
+        }
     }
 
     async liveQueryCi(): Promise<ReactiveValue<Promise<OutputQuery<"ci">>>> {
@@ -303,6 +317,8 @@ class QueryBar<T extends BaseQueryEntity> extends HTMLElement {
     /**
      * If a default query setting exists, it will be automatically set if no other URL parameter
      * besides the page parameter (or none at all) is set.
+     * 
+     * todo: use this.page instead of argument
      * 
      * @param page 
      * @param defaultQuerySetting setting of the page associated with the default query

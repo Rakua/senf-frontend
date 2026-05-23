@@ -84,12 +84,13 @@ const logEventsFrom: LogEventsFrom = [
 const mutedSources: MutedDataSources<LogSource> = [
     "main",
     "dev",
+    // "settings",
     // "LocationPage",
     // "SettingsPage",
     //"PeriodSelect",
     //"TabsComponent",
     // "App",
-    "router",
+    // "router",
     // "GalleryFilter",
     // "EchoGallery",
     // "LocationGallery",
@@ -116,7 +117,7 @@ const mutedData: MutedData = {
 }
 
 const exposeToDev = {
-    isMainTab,
+    isMainTab, DefaultLogger,
     toggleDarkMode, toggleLayout,
     modules: {
         BasicEvents, BasicLogger, BasicReactive, BasicMisc,

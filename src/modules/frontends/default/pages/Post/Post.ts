@@ -196,7 +196,6 @@ class PostPage extends HTMLElement {
         ]
         for (const x of inpEls) {
             x.el.addEventListener(x.type, () => this.#rememberDraft())
-            x.el.addEventListener(x.type, () => this.#rememberDraft())
         }
 
         this.#bodyR().onChange(() => {
@@ -204,8 +203,11 @@ class PostPage extends HTMLElement {
             this.#updatePreview()
         })
 
-        this.#initFormContents().then(() => this.#contentLoaded.resolve())
-
+        this.#initFormContents().then(() => {
+            this.#contentLoaded.resolve()
+            this.#rememberDraft()
+        })
+        
         lg.debug("PostPage mode: %O", this.mode())
     }
 

@@ -257,11 +257,12 @@ class Setting<T extends SettingValue> implements EventEmitter<SettingEvent<T>>, 
 
     get(): T {
         const x = this.#get()
-        return !x.valid || x.value === undefined ? this.#defaultValue : x.value
+        return !x.valid || x.value === undefined ? this.getDefault() : x.value
     }
 
     getDefault(): T {
-        return this.#defaultValue
+        //returns structured clone to prevent accidental mutation
+        return structuredClone(this.#defaultValue)
     }
 
     /**     
@@ -388,6 +389,7 @@ class Setting<T extends SettingValue> implements EventEmitter<SettingEvent<T>>, 
     }
 
     #setDefault(value: T, external: boolean) {
+        lg.debug("#setDefault: %O %O", value)
         const oldVal = this.#defaultValue
         this.#defaultValue = value
         if (external) return //do not emit event for external set
